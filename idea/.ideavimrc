@@ -1,0 +1,89 @@
+let mapleader = ' '
+
+" how do you even vim without this
+set number
+set relativenumber
+
+" tbh i don't know what this does but it's some tab stuff
+set tabstop = 4
+set softtabstop = 4
+set shiftwidth = 4
+set expandtab
+
+" this i kinda get i think
+set smartindent
+set wrap=false
+
+" highlight all search results while searching (i think)
+set incsearch
+
+" this is cool, J actually works
+set ideajoin
+
+
+" Focus sth (e.g. Focus Search)
+nmap <leader>f; <Action>(ActivateTerminalToolWindow)
+nmap <leader>f: <Action>(Terminal.OpenInTerminal)
+nmap <leader>ff <Action>(ActivateProjectToolWindow)
+nmap <leader>fs <Action>(FindInPath)
+nmap <leader>fc <Action>(ActivateCommitToolWindow)
+nmap <leader>fp <Action>(ActivateProblemsViewToolWindow)
+nmap <leader>ft <Action>(ActivateUnitTestsToolWindow)
+nmap <leader>fx <Action>(HideAllWindows)
+
+" tabs
+nmap <leader>j <Action>(NextTab)
+nmap <leader>k <Action>(PreviousTab)
+
+" system clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>y "+y
+nnoremap <leader>d "+d
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <leader>d "+d
+vnoremap <leader>P "+P
+
+" center stuff when navigating
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzz
+nnoremap N Nzz
+
+" move selected lines up one line
+xnoremap K :m-2<CR>gv=gv
+
+" move selected lines down one line
+xnoremap J :m'>+<CR>gv=gv
+
+" indentation fun
+vnoremap < <gv
+vnoremap > >gv
+
+" running and stuff
+nmap ,r <Action>(Run)
+nmap ,d <Action>(Debug)
+nmap ,cr <Action>(ContextRun)
+nmap ,cd <Action>(ContextDebug)
+nmap ,t <Action>(RiderUnitTestRunSolutionAction)
+nmap ,f <Action>(RiderUnitTestRerunBrokenSplitAction)
+
+" ide stuff
+nmap <leader><CR> <Action>(ShowIntentionActions)
+nmap <leader><leader> <Action>(GotoClass)
+nmap <leader>a <Action>(GotoAction)
+
+" goto is a bad language feature
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gh <Action>(QuickJavaDoc)
+nmap gj <Action>(Forward)
+nmap gk <Action>(Back)
+
+" debugging
+nmap \b <Action>(ToggleLineBreakpoint)
+nmap \r <Action>(Resume)
+nmap \j <Action>(StepInto)
+nmap \k <Action>(StepOut)
+nmap <C-\> <Action>(StepOver)
