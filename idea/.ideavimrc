@@ -66,6 +66,7 @@ nmap ,r <Action>(Run)
 nmap ,d <Action>(Debug)
 nmap ,cr <Action>(ContextRun)
 nmap ,cd <Action>(ContextDebug)
+nmap ,s <Action>(Stop)
 nmap ,t <Action>(RiderUnitTestRunSolutionAction)
 nmap ,f <Action>(RiderUnitTestRerunBrokenSplitAction)
 
