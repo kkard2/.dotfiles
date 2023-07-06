@@ -21,6 +21,12 @@ set incsearch
 set ideajoin
 
 
+" i want to try this
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
 " Focus sth (e.g. Focus Search)
 nmap <leader>f; <Action>(ActivateTerminalToolWindow)
 nmap <leader>f: <Action>(Terminal.OpenInTerminal)
@@ -79,8 +85,9 @@ nmap <leader>a <Action>(GotoAction)
 nmap gd <Action>(GotoDeclaration)
 nmap gi <Action>(GotoImplementation)
 nmap gh <Action>(QuickJavaDoc)
-nmap gj <Action>(Forward)
-nmap gk <Action>(Back)
+nmap ge <Action>(GotoNextError)
+nmap gE <Action>(GotoPreviousError)
+nmap gj <Action>(ShowErrorDescription)
 
 " debugging
 nmap \b <Action>(ToggleLineBreakpoint)
