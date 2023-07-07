@@ -78,6 +78,7 @@ nmap ,cd <Action>(ContextDebug)
 nmap ,s <Action>(Stop)
 nmap ,t <Action>(RiderUnitTestRunSolutionAction)
 nmap ,f <Action>(RiderUnitTestRerunBrokenSplitAction)
+nmap ,o <Action>(ReformatCode)
 
 " ide stuff
 nmap <leader><CR> <Action>(ShowIntentionActions)
