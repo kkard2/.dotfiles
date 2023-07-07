@@ -37,6 +37,9 @@ nmap <leader>fp <Action>(ActivateProblemsViewToolWindow)
 nmap <leader>ft <Action>(ActivateUnitTestsToolWindow)
 nmap <leader>fx <Action>(HideAllWindows)
 
+" lsp ig?
+nmap <leader>lr <Action>(RenameElement)
+
 " tabs
 nmap <leader>j <Action>(NextTab)
 nmap <leader>k <Action>(PreviousTab)
