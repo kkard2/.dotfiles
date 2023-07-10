@@ -1,0 +1,5 @@
+matches:
+  - trigger: "nei"
+    replace: "nie"
+    word: true
+    propagate_case: true
