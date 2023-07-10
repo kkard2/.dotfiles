@@ -1,6 +1,9 @@
 # .dotfiles
 config stuff (i need to move everything into one place)
 
+# running
+* run `./espanso/update_from_assets.py`
+
 # links for this to work
 * `~/.ideavimrc` -> `./idea/.ideavimrc`
 * `$XDG_CONFIG_HOME/espanso` -> `./espanso`
