@@ -97,12 +97,12 @@ CapsLock::{
     }
 }
 
-; !CapsLock::{
-;     return
-; }
-; ^CapsLock::{
-;     return
-; }
+!CapsLock::{
+    return
+}
+^CapsLock::{
+    return
+}
 ^!CapsLock::{
     return
 }
