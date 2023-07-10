@@ -18,4 +18,3 @@ def generate(path, output_file, prefix):
 
 if __name__ == '__main__':
     generate('assets/img', 'match/img.yml', 'i')
-    generate('assets/gif', 'match/gif.yml', 'g')
