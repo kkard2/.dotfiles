@@ -1,19 +1,19 @@
 matches:
-  - trigger: ;;ipipe
-    image_path: "$CONFIG\\assets\\pipe.png"
-  - trigger: ;;ialert
-    image_path: "$CONFIG\\assets\\alert.png"
-  - trigger: ;;imiska
-    image_path: "$CONFIG\\assets\\kot_w_misce.png"
-  - trigger: ;;ikot
-    image_path: "$CONFIG\\assets\\kot.png"
-  - trigger: ;;iwifereaction
-    image_path: "$CONFIG\\assets\\my_wife_reaction_to_that_information.png"
   - trigger: ;;iahh
-    image_path: "$CONFIG\\assets\\ahh.png"
-  - trigger: ;;ihuh
-    image_path: "$CONFIG\\assets\\huh.png"
-  - trigger: ;;irozpacz
-    image_path: "$CONFIG\\assets\\rozpacz.png"
+    image_path: $CONFIG/assets/img/ahh.png
+  - trigger: ;;ialert
+    image_path: $CONFIG/assets/img/alert.png
   - trigger: ;;iangry
-    image_path: "$CONFIG\\assets\\angry.png"
+    image_path: $CONFIG/assets/img/angry.png
+  - trigger: ;;ihuh
+    image_path: $CONFIG/assets/img/huh.png
+  - trigger: ;;ikot
+    image_path: $CONFIG/assets/img/kot.png
+  - trigger: ;;ikot_w_misce
+    image_path: $CONFIG/assets/img/kot_w_misce.png
+  - trigger: ;;imy_wife_reaction_to_that_information
+    image_path: $CONFIG/assets/img/my_wife_reaction_to_that_information.png
+  - trigger: ;;ipipe
+    image_path: $CONFIG/assets/img/pipe.png
+  - trigger: ;;irozpacz
+    image_path: $CONFIG/assets/img/rozpacz.png
