@@ -1,0 +1,19 @@
+matches:
+  - trigger: ;;ipipe
+    image_path: "$CONFIG\\assets\\pipe.png"
+  - trigger: ;;ialert
+    image_path: "$CONFIG\\assets\\alert.png"
+  - trigger: ;;imiska
+    image_path: "$CONFIG\\assets\\kot_w_misce.png"
+  - trigger: ;;ikot
+    image_path: "$CONFIG\\assets\\kot.png"
+  - trigger: ;;iwifereaction
+    image_path: "$CONFIG\\assets\\my_wife_reaction_to_that_information.png"
+  - trigger: ;;iahh
+    image_path: "$CONFIG\\assets\\ahh.png"
+  - trigger: ;;ihuh
+    image_path: "$CONFIG\\assets\\huh.png"
+  - trigger: ;;irozpacz
+    image_path: "$CONFIG\\assets\\rozpacz.png"
+  - trigger: ;;iangry
+    image_path: "$CONFIG\\assets\\angry.png"

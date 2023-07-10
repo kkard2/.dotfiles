@@ -1,0 +1,21 @@
+matches:
+  - trigger: ;;_0
+    replace: ₀
+  - trigger: ;;_1
+    replace: ₁
+  - trigger: ;;_2
+    replace: ₂
+  - trigger: ;;_3
+    replace: ₃
+  - trigger: ;;_4
+    replace: ₄
+  - trigger: ;;_5
+    replace: ₅
+  - trigger: ;;_6
+    replace: ₆
+  - trigger: ;;_7
+    replace: ₇
+  - trigger: ;;_8
+    replace: ₈
+  - trigger: ;;_9
+    replace: ₉

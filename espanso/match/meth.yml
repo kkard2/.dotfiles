@@ -1,0 +1,13 @@
+matches:
+  - trigger: ;;\cdot
+    replace: ⋅
+  - trigger: ;;\degree
+    replace: °
+  - trigger: ;;\beta
+    replace: β
+  - trigger: ;;\Delta
+    replace: Δ
+  - trigger: ;;\lambda
+    replace: λ
+  - trigger: ;;\Omega
+    replace: Ω
