@@ -1,0 +1,39 @@
+matches:
+  - trigger: ;;slightsm
+    replace: 🙂
+  - trigger: ;;slightfr
+    replace: 🙁
+  - trigger: ;;moyai
+    replace: 🗿
+  - trigger: ;;thup
+    replace: 👍
+  - trigger: ;;thdown
+    replace: 👎
+  - trigger: ;;skull
+    replace: 💀
+  - trigger: ;;weary
+    replace: 😩
+  - trigger: ;;nerd
+    replace: 🤓
+  - trigger: ;;sung
+    replace: 😎
+  - trigger: ;;fire
+    replace: 🔥
+  - trigger: ;;eyes
+    replace: 👀
+  - trigger: ;;fax
+    replace: 📠
+  - trigger: ;;whcheck
+    replace: ✅
+  - trigger: ;;cross
+    replace: ❌
+  - trigger: ;;pensive
+    replace: 😔
+  - trigger: ;;raisedeye
+    replace: 🤨
+  - trigger: ;;plead
+    replace: 🥺
+  - trigger: ;;pointup
+    replace: ☝️
+  - trigger: ;;shock
+    replace: 😱
