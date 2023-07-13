@@ -6,6 +6,20 @@ matches:
         type: date
         params:
           format: "%Y-%m-%d %H:%M:%S"
+  - trigger: ;;time
+    replace: "{{time}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%H:%M:%S"
+  - trigger: ;;date
+    replace: "{{time}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%Y-%m-%d"
   - trigger: ;;shrug
     replace: ¯\_(ツ)_/¯
   - trigger: ;;bshrug
