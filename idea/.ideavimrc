@@ -88,6 +88,7 @@ nmap <leader>a <Action>(GotoAction)
 " goto is a bad language feature
 nmap gd <Action>(GotoDeclaration)
 nmap gi <Action>(GotoImplementation)
+nmap gr <Action>(FindUsages)
 nmap gh <Action>(QuickJavaDoc)
 nmap ge <Action>(GotoNextError)
 nmap gE <Action>(GotoPreviousError)
