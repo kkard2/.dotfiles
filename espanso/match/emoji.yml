@@ -37,3 +37,5 @@ matches:
     replace: ☝️
   - trigger: ;;shock
     replace: 😱
+  - trigger: ;;heart
+    replace: ❤️
