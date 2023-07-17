@@ -39,3 +39,5 @@ matches:
     replace: 😱
   - trigger: ;;heart
     replace: ❤️
+  - trigger: ;;smirkcat
+    replace: 😼
