@@ -1,6 +1,11 @@
 #Requires AutoHotkey v2
 #SingleInstance Force
 
+GroupAdd("IDE", "ahk_exe rider64.exe")
+GroupAdd("IDE", "ahk_exe code.exe")
+GroupAdd("IDE", "ahk_exe code-insiders.exe")
+GroupAdd("IDE", "ahk_exe webstorm64.exe")
+
 CapsLockState := false
 HarpoonLastWindowIndex := 0
 
@@ -64,7 +69,7 @@ m::PgDn
 ; harpoon
 `::HarpoonRun("ahk_exe WindowsTerminal.exe")
 1::HarpoonRun("ahk_exe Discord.exe")
-2::HarpoonRun("ahk_exe rider64.exe")
+2::HarpoonRun("ahk_group IDE")
 3::HarpoonRun("ahk_exe msedge.exe")
 4::HarpoonRun("ahk_exe Element.exe")
 5::HarpoonRun("ahk_exe code.exe")
