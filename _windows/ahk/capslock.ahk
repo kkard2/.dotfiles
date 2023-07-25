@@ -6,6 +6,9 @@ GroupAdd("IDE", "ahk_exe code.exe")
 GroupAdd("IDE", "ahk_exe code-insiders.exe")
 GroupAdd("IDE", "ahk_exe webstorm64.exe")
 
+GroupAdd("Browser", "ahk_exe msedge.exe")
+GroupAdd("Browser", "ahk_exe firefox.exe")
+
 CapsLockState := false
 HarpoonLastWindowIndex := 0
 
@@ -70,7 +73,7 @@ m::PgDn
 `::HarpoonRun("ahk_exe WindowsTerminal.exe")
 1::HarpoonRun("ahk_exe Discord.exe")
 2::HarpoonRun("ahk_group IDE")
-3::HarpoonRun("ahk_exe msedge.exe")
+3::HarpoonRun("ahk_group Browser")
 4::HarpoonRun("ahk_exe Element.exe")
 5::HarpoonRun("ahk_exe code.exe")
 e::HarpoonRun("ahk_class CabinetWClass")
