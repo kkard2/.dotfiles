@@ -20,3 +20,7 @@ DO NOT SYMLINK PLEASE
 
 # windows
 * run `./_windows/startup.ps1` on startup (`PowerShell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File <PATH>`)
+
+# linux gigachad
+* `sudo apt install sxhkd` xdd
+* `~/.config/sxhkd/sxhkdrc` -> `./_linux/sxhkdrc`
