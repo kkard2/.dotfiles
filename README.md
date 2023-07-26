@@ -19,8 +19,7 @@ config stuff (i need to move everything into one place)
 DO NOT SYMLINK PLEASE
 
 # windows
-* run `./_windows/startup.ps1` on startup (`PowerShell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File <PATH>`)
+[README.md](_windows/README.md)
 
-# linux gigachad
-* `sudo apt install sxhkd` xdd
-* `~/.config/sxhkd/sxhkdrc` -> `./_linux/sxhkdrc`
+# linux
+[README.md](_linux/README.md)
