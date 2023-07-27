@@ -6,3 +6,12 @@ hyper + k
     xdotool keyup k key Up
 hyper + l
     xdotool keyup l key Right
+
+hyper + y
+    xdotool keyup y keydown Ctrl key Left keyup Ctrl
+hyper + u
+    xdotool keyup u keydown Ctrl key Down keyup Ctrl
+hyper + i
+    xdotool keyup i keydown Ctrl key Up keyup Ctrl
+hyper + o
+    xdotool keyup o keydown Ctrl key Right keyup Ctrl
