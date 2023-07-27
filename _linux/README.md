@@ -15,4 +15,6 @@ xcape -e 'Hyper_L=Escape' -t 200
 sxhkd &
 
 google-drive-ocamlfuse /home/kkard2/GoogleDrive
+
+~/.fehbg &
 ```
