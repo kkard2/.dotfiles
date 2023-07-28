@@ -7,6 +7,9 @@
 
 # .xprofile
 ```
+# idfk anymore
+setxkbmap -layout pl
+
 xmodmap /home/kkard2/.Xmodmap
 
 # yes, 200 is 200ms, this solution is very stupid
