@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -25,8 +25,9 @@ require("lazy").setup({
         lazy = false,
         config = require("kkard2.lazy.treesitter"),
     },
-    { 
-        "mbbill/undotree", keys = {
+    {
+        "mbbill/undotree",
+        keys = {
             { "<leader>ut", "<cmd>UndotreeToggle<CR><C-w>h" },
         }
     },
@@ -39,5 +40,54 @@ require("lazy").setup({
         "nvim-telescope/telescope.nvim",
         tag = "0.1.2",
         dependencies = { "nvim-lua/plenary.nvim" },
-    }
+        keys = {
+            { "<leader><leader>", "<cmd>Telescope find_files<CR>" },
+            { "<leader>fg",       "<cmd>Telescope live_grep<CR>" },
+            { "<leader>fh",       "<cmd>Telescope help_tags<CR>" },
+        },
+    },
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v2.x",
+        dependencies = {
+            -- LSP Support
+            { "neovim/nvim-lspconfig" },             -- Required
+            { "williamboman/mason.nvim" },           -- Optional
+            { "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+            -- Autocompletion
+            { "hrsh7th/nvim-cmp" },     -- Required
+            { "hrsh7th/cmp-nvim-lsp" }, -- Required
+            { "L3MON4D3/LuaSnip" },     -- Required
+        },
+        config = require("kkard2.lazy.lsp"),
+    },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            icons = false,
+            fold_open = "-",      -- icon used for open folds
+            fold_closed = "+",    -- icon used for closed folds
+            indent_lines = false, -- add an indent guide below the fold icons
+            signs = {
+                -- icons / text used for a diagnostic
+                error = "E",
+                warning = "W",
+                hint = "H",
+                information = "I"
+            },
+            use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+        },
+        keys = {
+            { "<leader>xx", function() require("trouble").open() end },
+            { "<leader>xw", function() require("trouble").open("workspace_diagnostics") end },
+            { "<leader>xd", function() require("trouble").open("document_diagnostics") end },
+        },
+    },
+    {
+        lazy = false,
+        "echasnovski/mini.trailspace",
+        config = function() require("mini.trailspace").setup() end,
+    },
 })
