@@ -28,3 +28,7 @@ vim.keymap.set("n", "<Esc>", function()
         vim.cmd(":q")
     end
 end)
+
+-- lmao
+vim.keymap.set("i", "<S-Tab>", "<Esc>k0ywj0\"_d$pa")
+vim.keymap.set("n", "<C-j>", "xi<CR><Esc>f ")
