@@ -30,5 +30,5 @@ vim.keymap.set("n", "<Esc>", function()
 end)
 
 -- lmao
-vim.keymap.set("i", "<S-Tab>", "<Esc>k0ywj0\"_d$pa")
+vim.keymap.set("i", "<S-Tab>", "<Esc>?.<CR><cmd>noh<CR>0yw<C-o>0\"_d$pa")
 vim.keymap.set("n", "<C-j>", "xi<CR><Esc>f ")
