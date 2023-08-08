@@ -94,4 +94,10 @@ require("lazy").setup({
         lazy = false,
         "github/copilot.vim",
     },
+    {
+        "https://tpope.io/vim/repeat.git",
+    },
+    {
+        "https://tpope.io/vim/surround.git",
+    },
 })
