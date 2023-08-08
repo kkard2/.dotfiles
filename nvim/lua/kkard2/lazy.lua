@@ -17,12 +17,10 @@ require("lazy").setup({
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        lazy = false,
         config = require("kkard2.lazy.catppuccin"),
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        lazy = false,
         config = require("kkard2.lazy.treesitter"),
     },
     {
@@ -33,7 +31,6 @@ require("lazy").setup({
     },
     {
         "nvim-lualine/lualine.nvim",
-        lazy = false,
         config = function() require("lualine").setup({}) end,
     },
     {
@@ -86,18 +83,11 @@ require("lazy").setup({
         },
     },
     {
-        lazy = false,
         "echasnovski/mini.trailspace",
         config = function() require("mini.trailspace").setup() end,
     },
-    {
-        lazy = false,
-        "github/copilot.vim",
-    },
-    {
-        "https://tpope.io/vim/repeat.git",
-    },
-    {
-        "https://tpope.io/vim/surround.git",
-    },
+
+    { "github/copilot.vim" },
+    { "https://tpope.io/vim/repeat.git" },
+    { "https://tpope.io/vim/surround.git" },
 })
