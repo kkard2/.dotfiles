@@ -41,3 +41,5 @@ matches:
     replace: ❤️
   - trigger: ;;smirkcat
     replace: 😼
+  - trigger: ;;flush
+    replace: 😳
