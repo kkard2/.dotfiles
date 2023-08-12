@@ -4,6 +4,7 @@
 # links
 * `~/.config/sxhkd/sxhkdrc` -> `./sxhkdrc`
 * `~/.Xmodmap` -> `./.Xmodmap`
+* `~/.tmux.conf` -> `./.tmux.conf`
 
 # .xprofile
 ```
