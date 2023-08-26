@@ -1,3 +1,8 @@
+call plug#begin()
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+call plug#end()
+
 let mapleader = ' '
 
 " how do you even vim without this
@@ -15,11 +20,12 @@ set smartindent
 set wrap=false
 
 " highlight all search results while searching (i think)
-set incsearch
+set incsearc
 
 " this is cool, J actually works
 set ideajoin
 
+nnoremap <C-j> xi<CR><Esc>f\ 
 
 " i want to try this
 nnoremap ; :
@@ -39,10 +45,10 @@ nmap <leader>fx <Action>(HideAllWindows)
 
 " lsp ig?
 nmap <leader>lr <Action>(RenameElement)
-
-" tabs
-nmap <leader>j <Action>(NextTab)
-nmap <leader>k <Action>(PreviousTab)
+nmap <leader>lf <Action>(ReformatCode)
+nmap <C-]> <Action>(GotoNextError)
+nmap <C-[> <Action>(GotoPreviousError)
+nmap gh <Action>(ShowErrorDescription)
 
 " system clipboard
 nnoremap <leader>p "+p
@@ -78,21 +84,16 @@ nmap ,cd <Action>(ContextDebug)
 nmap ,s <Action>(Stop)
 nmap ,t <Action>(RiderUnitTestRunSolutionAction)
 nmap ,f <Action>(RiderUnitTestRerunBrokenSplitAction)
-nmap ,o <Action>(ReformatCode)
 
 " ide stuff
 nmap <leader><CR> <Action>(ShowIntentionActions)
-nmap <leader><leader> <Action>(GotoClass)
+nmap <leader><leader> <Action>(GotoFile)
 nmap <leader>a <Action>(GotoAction)
 
 " goto is a bad language feature
 nmap gd <Action>(GotoDeclaration)
 nmap gi <Action>(GotoImplementation)
 nmap gr <Action>(FindUsages)
-nmap gh <Action>(QuickJavaDoc)
-nmap ge <Action>(GotoNextError)
-nmap gE <Action>(GotoPreviousError)
-nmap gj <Action>(ShowErrorDescription)
 
 " debugging
 nmap \b <Action>(ToggleLineBreakpoint)
