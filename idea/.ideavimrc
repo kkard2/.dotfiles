@@ -21,6 +21,7 @@ set wrap=false
 
 " highlight all search results while searching (i think)
 set incsearc
+set hlsearch
 
 " this is cool, J actually works
 set ideajoin
