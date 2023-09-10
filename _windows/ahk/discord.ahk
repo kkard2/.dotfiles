@@ -1,11 +1,11 @@
 #Requires AutoHotkey v2
 #SingleInstance Force
 
-#HotIf GetKeyState("CapsLock", "P")
-^j::!Down
-^k::!Up
-^u::^!Down
-^i::^!Up
-^m::+!Down
-^,::+!Up
+#HotIf WinActive("ahk_exe Discord.exe")
+!k::!Up
+!j::!Down
+^!k::^!Up
+^!j::^!Down
++!k::+!Up
++!j::+!Down
 #HotIf
