@@ -43,3 +43,5 @@ matches:
     replace: 😼
   - trigger: ;;flush
     replace: 😳
+  - trigger: ;;phone
+    replace: 📱
