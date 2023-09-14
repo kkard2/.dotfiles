@@ -20,7 +20,7 @@ set smartindent
 set wrap=false
 
 " highlight all search results while searching (i think)
-set incsearc
+set incsearch
 set hlsearch
 
 " this is cool, J actually works
