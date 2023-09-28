@@ -31,7 +31,12 @@ require("lazy").setup({
     },
     {
         "nvim-lualine/lualine.nvim",
-        config = function() require("lualine").setup({}) end,
+        config = function() require("lualine").setup({
+            options = {
+                component_separators = { left = " ", right = " " },
+                section_separators = { left = " ", right = " " },
+            },
+        }) end,
     },
     {
         "nvim-telescope/telescope.nvim",
@@ -90,4 +95,6 @@ require("lazy").setup({
     { "github/copilot.vim" },
     { "https://tpope.io/vim/repeat.git" },
     { "https://tpope.io/vim/surround.git" },
+    -- i also don't know why the above ones are like this
+    { "tpope/vim-commentary" },
 })
