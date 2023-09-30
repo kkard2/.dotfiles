@@ -8,4 +8,6 @@
 ^!j::^!Down
 +!k::+!Up
 +!j::+!Down
+
+^w::^Backspace
 #HotIf
