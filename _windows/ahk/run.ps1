@@ -3,4 +3,5 @@ Push-Location $PSScriptRoot
 .\media.ahk
 .\discord.ahk
 .\element.ahk
+.\c-w.ahk
 Pop-Location
