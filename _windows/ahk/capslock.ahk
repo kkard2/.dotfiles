@@ -10,6 +10,7 @@ GroupAdd("Browser", "ahk_exe msedge.exe")
 GroupAdd("Browser", "ahk_exe firefox.exe")
 
 CapsLockState := false
+ShiftLockState := false
 HarpoonLastWindowIndex := 0
 
 HarpoonRun(winTitle) {
@@ -35,6 +36,22 @@ HarpoonRun(winTitle) {
 \::{
     global CapsLockState := not CapsLockState
     SetCapsLockState CapsLockState
+}
+Enter::{
+    global ShiftLockState := not ShiftLockState
+    if ShiftLockState {
+        SendInput "{LShift Down}"
+    } else {
+        SendInput "{LShift Up}"
+    }
+}
++Enter::{
+    global ShiftLockState := not ShiftLockState
+    if ShiftLockState {
+        SendInput "{LShift Down}"
+    } else {
+        SendInput "{LShift Up}"
+    }
 }
 
 ; vim motion
