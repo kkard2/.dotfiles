@@ -36,3 +36,5 @@ matches:
     replace: |
       i want to make a confession:
       for the longest time i urged people to use "share" functionality on the youtube website, because it produced better looking, shorter links. now i realized this was a mistake; currently, si= was added for better tracking and links aren't even shorter anymore. please revert to copying links from the address bar (or select a part of the link that matters like i do)
+  - trigger: ;;emdash
+    replace: —

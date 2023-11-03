@@ -11,5 +11,9 @@ matches:
     replace: λ
   - trigger: ;;\Omega
     replace: Ω
+  - trigger: ;;\omega
+    replace: ω
   - trigger: ;;\micro
     replace: μ
+  - trigger: ;;\phi
+    replace: ϕ
