@@ -57,7 +57,7 @@ return function()
     vim.keymap.set("n", "<leader><CR>", vim.lsp.buf.code_action)
     vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
-
+    vim.g.zig_fmt_autosave = 0
 
     -- temp
     require("lspconfig").tsserver.setup({
