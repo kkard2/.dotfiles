@@ -67,6 +67,9 @@ end)
 vim.keymap.set("i", "<S-Tab>", "<Esc>0\"_d$?.<CR><cmd>noh<CR>0\"myw<C-o>0\"_d$\"mpa")
 vim.keymap.set("n", "<C-j>", "\"_xi<CR><Esc>f ")
 
+vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = nil, ctermbg = nil })
+vim.api.nvim_set_hl(0, "DiagnosticError", { ctermfg = "White", ctermbg = "DarkRed" })
+vim.api.nvim_set_hl(0, "DiagnosticWarn", { ctermfg = "LightYellow" })
 
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -128,7 +131,6 @@ require("lazy").setup({
             lspconfig.zls.setup({})
             lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
             lsp.setup()
-
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),
                 callback = function(ev)
@@ -137,11 +139,12 @@ require("lazy").setup({
                     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                    vim.keymap.set("n", "gh", vim.diagnostic.open_float, opts)
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                    vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
                     vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
                     vim.keymap.set({ "n", "v" }, "<leader><CR>", vim.lsp.buf.code_action, opts)
                     vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
-                    vim.keymap.set("n", "gh", vim.diagnostic.open_float, opts)
                 end,
             })
         end
