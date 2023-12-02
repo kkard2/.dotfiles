@@ -127,9 +127,14 @@ require("lazy").setup({
             lsp_zero.extend_lspconfig()
             local lsp = lsp_zero.preset({})
             local lspconfig = require("lspconfig")
+
             lspconfig.rust_analyzer.setup({})
             lspconfig.zls.setup({})
             lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+            lspconfig.omnisharp.setup({
+                cmd = { "OmniSharp" }
+            })
+
             lsp.setup()
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),
