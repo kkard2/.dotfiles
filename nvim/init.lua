@@ -116,33 +116,37 @@ require("lazy").setup({
     "tpope/vim-surround",
     "tpope/vim-commentary",
 
-    { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x', config = function()
-        local lsp_zero = require("lsp-zero")
-        lsp_zero.extend_lspconfig()
-        local lsp = lsp_zero.preset({})
-        local lspconfig = require("lspconfig")
-        lspconfig.rust_analyzer.setup({})
-        lspconfig.zls.setup({})
-        lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-        lsp.setup()
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        config = function()
+            local lsp_zero = require("lsp-zero")
+            lsp_zero.extend_lspconfig()
+            local lsp = lsp_zero.preset({})
+            local lspconfig = require("lspconfig")
+            lspconfig.rust_analyzer.setup({})
+            lspconfig.zls.setup({})
+            lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+            lsp.setup()
 
-        vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-            callback = function(ev)
-                local opts = { buffer = ev.buf }
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
-                vim.keymap.set({ "n", "v" }, "<leader><CR>", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
-            end,
-        })
-    end },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/nvim-cmp' },
-    { 'L3MON4D3/LuaSnip' },
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+                callback = function(ev)
+                    local opts = { buffer = ev.buf }
+                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                    vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
+                    vim.keymap.set({ "n", "v" }, "<leader><CR>", vim.lsp.buf.code_action, opts)
+                    vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
+                end,
+            })
+        end
+    },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/nvim-cmp" },
+    { "L3MON4D3/LuaSnip" },
     { "neovim/nvim-lspconfig" },
 })
