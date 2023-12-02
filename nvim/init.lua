@@ -117,7 +117,9 @@ require("lazy").setup({
     "tpope/vim-commentary",
 
     { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x', config = function()
-        local lsp = require("lsp-zero").preset({})
+        local lsp_zero = require("lsp-zero")
+        lsp_zero.extend_lspconfig()
+        local lsp = lsp_zero.preset({})
         local lspconfig = require("lspconfig")
         lspconfig.rust_analyzer.setup({})
         lspconfig.zls.setup({})
