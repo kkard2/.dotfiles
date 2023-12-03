@@ -63,9 +63,19 @@ vim.keymap.set("n", "<Esc>", function()
     end
 end)
 
--- well i tried to not overwrite default register but it didn't work
+-- copy indent from line above
 vim.keymap.set("i", "<S-Tab>", "<Esc>0\"_d$?.<CR><cmd>noh<CR>0\"myw<C-o>0\"_d$\"mpa")
-vim.keymap.set("n", "<C-j>", "\"_xi<CR><Esc>f ")
+-- insert line break under cursor in normal mode
+vim.keymap.set("n", "<C-j>", function()
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+    local char = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
+
+    if (char == " ") then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("\"_xi<CR><Esc>f ", true, true, true))
+    else
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("i<CR><Esc>f ", true, true, true))
+    end
+end)
 
 vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = nil, ctermbg = nil })
 vim.api.nvim_set_hl(0, "DiagnosticError", { ctermfg = "White", ctermbg = "DarkRed" })
