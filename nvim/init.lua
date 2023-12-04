@@ -25,8 +25,6 @@ vim.opt.colorcolumn = "80,100,120"
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 vim.g.netrw_banner = 0
 
-vim.cmd("colorscheme evening")
-
 vim.opt.signcolumn = "yes"
 vim.opt.list = true
 
@@ -77,9 +75,22 @@ vim.keymap.set("n", "<C-j>", function()
     end
 end)
 
+
+-- colorscheme
+vim.cmd("colorscheme evening")
+
+vim.api.nvim_set_hl(0, "Normal", { ctermbg = "Black" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { ctermbg = "Black" })
+
 vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = nil, ctermbg = nil })
+
 vim.api.nvim_set_hl(0, "DiagnosticError", { ctermfg = "White", ctermbg = "DarkRed" })
 vim.api.nvim_set_hl(0, "DiagnosticWarn", { ctermfg = "LightYellow" })
+
+vim.api.nvim_set_hl(0, "LineNrAbove", { ctermfg = "LightYellow" })
+vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "White" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { ctermfg = "LightBlue" })
+
 
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
