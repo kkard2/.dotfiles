@@ -77,7 +77,9 @@ end)
 
 
 -- colorscheme
+
 vim.cmd("colorscheme evening")
+vim.opt.guicursor = nil;
 
 vim.api.nvim_set_hl(0, "Normal", { ctermbg = "Black" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { ctermbg = "Black" })
