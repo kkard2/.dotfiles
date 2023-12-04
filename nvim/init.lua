@@ -118,11 +118,21 @@ require("lazy").setup({
         "nvim-telescope/telescope.nvim",
         tag = "0.1.4",
         dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = true,
         keys = {
             { "<leader><leader>", "<cmd>Telescope find_files<CR>" },
             { "<leader>fg",       "<cmd>Telescope live_grep<CR>" },
             { "<leader>fh",       "<cmd>Telescope help_tags<CR>" },
         },
+        config = function()
+            require("telescope").setup({
+                defaults = {
+                    preview = {
+                        treesitter = false,
+                    },
+                },
+            })
+        end
     },
 
     "tpope/vim-repeat",
