@@ -143,6 +143,14 @@ require("lazy").setup({
                     preview = {
                         treesitter = false,
                     },
+                    file_ignore_patterns = {
+                        ".git",
+                        -- i should probly make this less bad
+                        "zig-cache/",
+                        "zig-out/",
+                        "build/",
+                        "bin/",
+                    },
                 },
             })
         end
