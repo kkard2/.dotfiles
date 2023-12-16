@@ -45,3 +45,5 @@ matches:
     replace: 😳
   - trigger: ;;phone
     replace: 📱
+  - trigger: ;;sob
+    replace: 😭
