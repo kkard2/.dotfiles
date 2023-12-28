@@ -5,6 +5,8 @@ matches:
     image_path: $CONFIG/assets/img/aware.png
   - trigger: ;;iclueless
     image_path: $CONFIG/assets/img/clueless.png
+  - trigger: ;;icopium
+    image_path: $CONFIG/assets/img/copium.png
   - trigger: ;;idespair
     image_path: $CONFIG/assets/img/despair.png
   - trigger: ;;ihuh
