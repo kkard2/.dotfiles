@@ -1,0 +1,25 @@
+matches:
+  - trigger: ;;ialert
+    image_path: $CONFIG/assets/img/alert.png
+  - trigger: ;;iaware
+    image_path: $CONFIG/assets/img/aware.png
+  - trigger: ;;iclueless
+    image_path: $CONFIG/assets/img/clueless.png
+  - trigger: ;;idespair
+    image_path: $CONFIG/assets/img/despair.png
+  - trigger: ;;ihuh
+    image_path: $CONFIG/assets/img/huh.png
+  - trigger: ;;ikot
+    image_path: $CONFIG/assets/img/kot.png
+  - trigger: ;;imiska
+    image_path: $CONFIG/assets/img/miska.png
+  - trigger: ;;ipipe
+    image_path: $CONFIG/assets/img/pipe.png
+  - trigger: ;;isi
+    image_path: $CONFIG/assets/img/si.png
+  - trigger: ;;itf
+    image_path: $CONFIG/assets/img/tf.png
+  - trigger: ;;iumniedziala
+    image_path: $CONFIG/assets/img/umniedziala.jpg
+  - trigger: ;;ixdd
+    image_path: $CONFIG/assets/img/xdd.png
