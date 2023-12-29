@@ -55,7 +55,7 @@
 	padding: 0;
 	box-shadow: none;
 	text-shadow: none;
-	icon-shadow: none;
+	-gtk-icon-shadow: none;
 }
 
 /* The whole bar */
@@ -87,26 +87,23 @@
 }
 
 /* Each critical module */
+
 #mode,
 #memory.critical,
 #cpu.critical,
 #temperature.critical,
 #battery.critical.discharging {
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	animation-name: blink-critical;
-	animation-duration: 1s;
+	color: #ff0000;
 }
 
 /* Each warning */
-#network.disconnected,
-#memory.warning,
-#cpu.warning,
-#temperature.warning,
-#battery.warning.discharging {
-	color: @warning;
-}
+/* #network.disconnected, */
+/* #memory.warning, */
+/* #cpu.warning, */
+/* #temperature.warning, */
+/* #battery.warning.discharging { */
+/* 	color: @warning; */
+/* } */
 
 /* And now modules themselves in their respective order */
 
