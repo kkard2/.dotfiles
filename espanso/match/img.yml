@@ -9,6 +9,8 @@ matches:
     image_path: $CONFIG/assets/img/copium.png
   - trigger: ;;idespair
     image_path: $CONFIG/assets/img/despair.png
+  - trigger: ;;iextreme
+    image_path: $CONFIG/assets/img/extreme.png
   - trigger: ;;ihuh
     image_path: $CONFIG/assets/img/huh.png
   - trigger: ;;ikot
