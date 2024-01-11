@@ -197,7 +197,19 @@ require("lazy").setup({
         end
     },
     { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/nvim-cmp" },
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = { "quangnguyen30192/cmp-nvim-tags" },
+        config = function()
+            require("cmp").setup({
+                sources = {
+                    { name = "nvim_lsp" },
+                    { name = "tags" },
+                },
+            })
+        end
+
+    },
     { "L3MON4D3/LuaSnip" },
     { "neovim/nvim-lspconfig" },
 
