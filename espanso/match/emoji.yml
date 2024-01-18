@@ -47,3 +47,5 @@ matches:
     replace: 📱
   - trigger: ;;sob
     replace: 😭
+  - trigger: ;;vomit
+    replace: 🤮
