@@ -78,11 +78,8 @@ end)
 
 -- colorscheme
 
-vim.cmd("colorscheme evening")
+vim.cmd("colorscheme industry")
 vim.opt.guicursor = "n-v-c-i-r:block";
-
-vim.api.nvim_set_hl(0, "Normal", { ctermbg = "Black" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { ctermbg = "Black" })
 
 vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = nil, ctermbg = nil })
 
