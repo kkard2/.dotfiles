@@ -121,7 +121,7 @@ require("lazy").setup({
     {
         "mbbill/undotree",
         keys = {
-            { "<leader>ut", "<cmd>UndotreeToggle<CR>" }
+            { "<leader>ut", "<cmd>UndotreeToggle<CR><C-w>h<C-w>h<C-w>h<C-w>h" }
         },
     },
     {
