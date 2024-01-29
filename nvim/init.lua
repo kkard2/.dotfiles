@@ -28,6 +28,7 @@ vim.g.netrw_banner = 0
 vim.opt.signcolumn = "yes"
 vim.opt.list = true
 
+vim.o.exrc = true
 
 -- remap
 vim.g.mapleader = " "
