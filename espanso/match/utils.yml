@@ -20,6 +20,13 @@ matches:
         type: date
         params:
           format: "%Y-%m-%d"
+  - trigger: ;;rssnow
+    replace: "{{time}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%a, %d %b %Y %H:%M:%S %z"
   - trigger: ;;shrug
     replace: ¯\_(ツ)_/¯
   - trigger: ;;bshrug
