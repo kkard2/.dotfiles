@@ -49,3 +49,5 @@ matches:
     replace: 😭
   - trigger: ;;vomit
     replace: 🤮
+  - trigger: ;;party
+    replace: 🥳
