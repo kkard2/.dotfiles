@@ -113,7 +113,8 @@
 	"hyprland/window": {
 		"format": "{}",
 //		"max-length": 30,
-		"tooltip": false
+		"tooltip": false,
+		"separate-outputs": true
 	},
 
 	"hyprland/workspaces": {

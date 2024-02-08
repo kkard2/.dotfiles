@@ -69,13 +69,33 @@ vim.keymap.set("n", "<C-j>", function()
     local col = vim.api.nvim_win_get_cursor(0)[2]
     local char = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
 
-    if (char == " ") then
+    if char == " " then
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("\"_xi<CR><Esc>f ", true, true, true))
     else
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("i<CR><Esc>f ", true, true, true))
     end
 end)
 
+vim.keymap.set("n", "<leader>tt", function()
+    vim.opt.expandtab = not vim.opt.expandtab
+end)
+
+-- what not using lualine does to a mf
+vim.cmd([[set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P]]) --default
+vim.cmd([[set statusline+=\ ft=%{&filetype}]])
+vim.cmd([[set statusline+=\ ff=%{&fileformat}]])
+vim.cmd([[set statusline+=\ spaces=%{&expandtab}]])
+
+-- vim.opt.statusline.append(function()
+--     return "test"
+-- end)
+-- vim.keymap.set("n", "<leader>ptt", function()
+--     if vim.opt.expandtab then
+--         vim.print("TABS")
+--     else
+--         vim.print("SPACES")
+--     end
+-- end)
 
 -- colorscheme
 
