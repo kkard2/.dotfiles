@@ -51,3 +51,5 @@ matches:
     replace: 🤮
   - trigger: ;;party
     replace: 🥳
+  - trigger: ;;salut
+    replace: 🫡
