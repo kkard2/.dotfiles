@@ -217,6 +217,12 @@ require("lazy").setup({
             })
         end
     },
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end,
+    },
     { "hrsh7th/cmp-nvim-lsp" },
     {
         "hrsh7th/nvim-cmp",
