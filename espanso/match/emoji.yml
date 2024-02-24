@@ -53,3 +53,5 @@ matches:
     replace: 🥳
   - trigger: ;;salut
     replace: 🫡
+  - trigger: ;;woried
+    replace: 😟
