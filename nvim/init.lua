@@ -8,7 +8,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
-vim.opt.wrap = true -- we'll see if i like it
+vim.opt.wrap = false -- i didn't like it
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -99,7 +99,7 @@ vim.cmd([[set statusline+=\ spaces=%{&expandtab}]])
 vim.keymap.set("i", "<C-l>", function()
     if vim.bo.filetype == "html" or vim.bo.filetype == "xml" then
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
-            [[<Esc>mx?<[^/].\{-}><CR>"zyi<`xa<CR></<Esc>"zpa><Esc>O]],
+            [[<Esc>mx?<[^/].\{-}><CR>l"zy/[ >]<CR>`xa<CR></<Esc>"zpa><Esc>O]],
             true, true, true
         ))
         vim.schedule(function()
