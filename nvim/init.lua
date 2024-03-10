@@ -18,7 +18,7 @@ vim.opt.undofile = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 2
 
 vim.opt.colorcolumn = "80,100,120"
 
@@ -77,7 +77,16 @@ vim.keymap.set("n", "<C-j>", function()
 end)
 
 vim.keymap.set("n", "<leader>tt", function()
-    vim.opt.expandtab = not vim.opt.expandtab
+    -- idk it works
+    ---@diagnostic disable-next-line: undefined-field
+    if vim.opt.expandtab:get() then
+        vim.opt.expandtab = false
+    else
+        vim.opt.expandtab = true
+    end
+
+    -- this is idiotic
+    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-l>", true, true, true))
 end)
 
 -- what not using lualine does to a mf
@@ -86,16 +95,27 @@ vim.cmd([[set statusline+=\ ft=%{&filetype}]])
 vim.cmd([[set statusline+=\ ff=%{&fileformat}]])
 vim.cmd([[set statusline+=\ spaces=%{&expandtab}]])
 
--- vim.opt.statusline.append(function()
---     return "test"
--- end)
--- vim.keymap.set("n", "<leader>ptt", function()
---     if vim.opt.expandtab then
---         vim.print("TABS")
---     else
---         vim.print("SPACES")
---     end
--- end)
+-- closing "code blocks"
+vim.keymap.set("i", "<C-l>", function()
+    if vim.bo.filetype == "html" or vim.bo.filetype == "xml" then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
+            [[<Esc>mx?<[^/].\{-}><CR>"zyi<`xa<CR></<Esc>"zpa><Esc>O]],
+            true, true, true
+        ))
+        vim.schedule(function()
+            vim.cmd("noh")
+        end)
+    elseif vim.bo.filetype == "lua" then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
+            [[<CR>end<Esc>O]], true, true, true
+        ))
+    else -- reasonable default
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
+            [[<CR>}<Esc>O]], true, true, true
+        ))
+    end
+end)
+
 
 -- colorscheme
 
