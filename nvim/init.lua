@@ -116,6 +116,16 @@ vim.keymap.set("i", "<C-l>", function()
     end
 end)
 
+-- i've heard you tagged your files so i tagged your file that were not tagged
+vim.keymap.set("n", "<leader>tf", function()
+    local path = vim.api.nvim_buf_get_name(0)
+    vim.cmd("silent !ctags -a " .. path)
+end)
+
+vim.keymap.set("n", "<leader>td", function()
+    vim.cmd("silent !ctags -aR .")
+end)
+
 
 -- colorscheme
 
