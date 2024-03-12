@@ -55,3 +55,5 @@ matches:
     replace: 🫡
   - trigger: ;;woried
     replace: 😟
+  - trigger: ;;alien
+    replace: 👽
