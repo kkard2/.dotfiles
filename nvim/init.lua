@@ -224,6 +224,8 @@ require("lazy").setup({
                 cmd = { "OmniSharp" }
             })
             lspconfig.clangd.setup({})
+            lspconfig.clangd.setup({})
+            lspconfig.hls.setup({})
 
             lsp.setup()
             vim.api.nvim_create_autocmd("LspAttach", {
