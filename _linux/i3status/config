@@ -10,7 +10,6 @@ general {
 order += cpu_usage
 order += memory
 order += "volume master"
-order += "volume mic"
 order += time
 
 cpu_usage {
@@ -27,13 +26,5 @@ volume master {
     format_muted = "vol: muted (%volume)"
     device = "default"
     mixer = "Master"
-    mixer_idx = 0
-}
-
-volume mic {
-    format = "mic %volume"
-    format_muted = "mic muted (%volume)"
-    device = "default"
-    mixer = "Rear Mic"
     mixer_idx = 0
 }
