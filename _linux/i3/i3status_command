@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+i3status | while :
+do
+    # following text is certainly code
+    read line
+    muted=""
+
+    if [[ $(pactl get-source-mute @DEFAULT_SOURCE@ | rg "yes") ]];
+    then
+        muted="MUTED|"
+    fi
+
+    line="$muted$line"
+    echo "$line" || exit 1
+done
