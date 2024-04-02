@@ -28,11 +28,7 @@ set ideajoin
 
 nnoremap <C-j> xi<CR><Esc>f\ 
 
-" i want to try this
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+nmap <leader>w :w
 
 " Focus sth (e.g. Focus Search)
 nmap <leader>f; <Action>(ActivateTerminalToolWindow)
@@ -47,8 +43,8 @@ nmap <leader>fx <Action>(HideAllWindows)
 " lsp ig?
 nmap <leader>lr <Action>(RenameElement)
 nmap <leader>lf <Action>(ReformatCode)
-nmap <C-]> <Action>(GotoNextError)
-nmap <C-[> <Action>(GotoPreviousError)
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
 nmap gh <Action>(ShowErrorDescription)
 
 " system clipboard

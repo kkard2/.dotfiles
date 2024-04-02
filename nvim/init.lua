@@ -12,7 +12,27 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
 
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+vim.opt.scrolloff = 2
+
+vim.opt.colorcolumn = "80,100,120"
+
+vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
+vim.g.netrw_banner = 0
+
+vim.opt.signcolumn = "yes"
+vim.opt.list = true
+
 vim.o.exrc = true
+
+vim.keymap.set("n", "<leader>w", vim.cmd.write)
 
 vim.keymap.set("n", "<leader>ff", vim.cmd.Ex)
 
@@ -52,7 +72,6 @@ end)
 
 vim.keymap.set("n", "<leader>tt", function()
     -- idk it works
-    ---@diagnostic disable-next-line: undefined-field
     if vim.opt.expandtab:get() then
         vim.opt.expandtab = false
     else
@@ -176,7 +195,12 @@ require("lazy").setup({
                     map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
                     map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
                     map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-                    map("gt", require('telescope.builtin').lsp_type_definitions, "Type [D]efinition")
+                    map("gt", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+                    map("gh", vim.diagnostic.open_float, "[G]oto [H]ighlight Error (idk)")
+
+                    map("[d", vim.diagnostic.goto_next, "Next [D]iagnostic")
+                    map("]d", vim.diagnostic.goto_prev, "Prev [D]iagnostic")
+
                     map("<leader>lr", vim.lsp.buf.rename, "[L]SP [R]ename")
                     map("<leader><CR>", vim.lsp.buf.code_action, "Code Action")
                     map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -238,7 +262,7 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local harpoon = require("harpoon")
-            harpoon:setup()
+            harpoon:setup({})
 
             vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
             vim.keymap.set("n", "<leader>s", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
