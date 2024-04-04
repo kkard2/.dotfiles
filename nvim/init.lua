@@ -14,6 +14,8 @@ vim.opt.wrap = false
 
 vim.o.exrc = true
 
+vim.keymap.set("n", "<leader>w", vim.cmd.write)
+
 vim.keymap.set("n", "<leader>ff", vim.cmd.Ex)
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
