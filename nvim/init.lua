@@ -12,6 +12,24 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
 
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+vim.opt.scrolloff = 2
+
+vim.opt.colorcolumn = "80,100,120"
+
+vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
+vim.g.netrw_banner = 0
+
+vim.opt.signcolumn = "yes"
+vim.opt.list = true
+
 vim.o.exrc = true
 
 vim.keymap.set("n", "<leader>w", vim.cmd.write)
