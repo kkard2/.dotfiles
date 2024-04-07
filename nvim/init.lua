@@ -101,13 +101,17 @@ end)
 vim.cmd("colorscheme industry")
 vim.opt.guicursor = "n-v-c-i-r:block";
 
-vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = nil, ctermbg = nil })
+vim.api.nvim_set_hl(0, "FloatBorder", { foreground = nil, background = nil })
 
-vim.api.nvim_set_hl(0, "DiagnosticError", { ctermfg = "White", ctermbg = "DarkRed" })
-vim.api.nvim_set_hl(0, "DiagnosticWarn", { ctermfg = "LightYellow" })
+vim.api.nvim_set_hl(0, "DiagnosticError", { foreground = "White", background = "DarkRed" })
+vim.api.nvim_set_hl(0, "DiagnosticWarn", { foreground = "Yellow" })
 
 -- rust analyzer makes this navy blue by default for some reason
-vim.api.nvim_set_hl(0, "CmpItemAbbr", { ctermfg = "White" })
+vim.api.nvim_set_hl(0, "CmpItemAbbr", { foreground = "White" })
+
+vim.api.nvim_set_hl(0, "LineNrAbove", { foreground = "LightYellow" })
+vim.api.nvim_set_hl(0, "LineNr", { foreground = "White" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { foreground = "LightBlue" })
 
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
