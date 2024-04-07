@@ -106,9 +106,8 @@ vim.api.nvim_set_hl(0, "FloatBorder", { ctermfg = nil, ctermbg = nil })
 vim.api.nvim_set_hl(0, "DiagnosticError", { ctermfg = "White", ctermbg = "DarkRed" })
 vim.api.nvim_set_hl(0, "DiagnosticWarn", { ctermfg = "LightYellow" })
 
-vim.api.nvim_set_hl(0, "LineNrAbove", { ctermfg = "LightYellow" })
-vim.api.nvim_set_hl(0, "LineNr", { ctermfg = "White" })
-vim.api.nvim_set_hl(0, "LineNrBelow", { ctermfg = "LightBlue" })
+-- rust analyzer makes this navy blue by default for some reason
+vim.api.nvim_set_hl(0, "CmpItemAbbr", { ctermfg = "White" })
 
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
