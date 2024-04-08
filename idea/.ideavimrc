@@ -28,7 +28,7 @@ set ideajoin
 
 nnoremap <C-j> xi<CR><Esc>f\ 
 
-nmap <leader>w :w
+nmap <leader>w :w<CR>
 
 " Focus sth (e.g. Focus Search)
 nmap <leader>f; <Action>(ActivateTerminalToolWindow)
