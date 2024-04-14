@@ -8,7 +8,7 @@ do
 
     if [[ $(pactl get-source-mute @DEFAULT_SOURCE@ | rg "yes") ]];
     then
-        muted="MUTED|"
+        muted="MUTED MUTED MUTED MUTED MUTED MUTED|"
     fi
 
     line="$muted$line"
