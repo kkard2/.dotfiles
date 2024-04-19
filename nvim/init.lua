@@ -24,6 +24,14 @@ vim.opt.scrolloff = 2
 
 vim.opt.colorcolumn = "80,100,120"
 
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+    callback = function()
+        vim.cmd("set formatoptions-=r")
+        vim.cmd("set formatoptions-=o")
+    end
+})
+
+
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 vim.g.netrw_banner = 0
 
@@ -33,8 +41,6 @@ vim.opt.list = true
 vim.o.exrc = true
 
 vim.keymap.set("n", "<leader>w", vim.cmd.write)
-
-vim.keymap.set("n", "<leader>ff", vim.cmd.Ex)
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -55,6 +61,9 @@ vim.keymap.set("n", "<Esc>", function()
         vim.cmd("noh")
     end
 end)
+
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
 
 -- copy indent from line above
 vim.keymap.set("i", "<S-Tab>", "<Esc>0\"_d$?.<CR><cmd>noh<CR>0\"myw<C-o>0\"_d$\"mpa")
@@ -86,6 +95,7 @@ vim.cmd([[set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P]]) --default
 vim.cmd([[set statusline+=\ ft=%{&filetype}]])
 vim.cmd([[set statusline+=\ ff=%{&fileformat}]])
 vim.cmd([[set statusline+=\ spaces=%{&expandtab}]])
+vim.cmd([[set statusline+=%{get(b:,'\ \ gitsigns_status','')}]])
 
 vim.keymap.set("n", "<leader>tf", function()
     local path = vim.api.nvim_buf_get_name(0)
@@ -113,6 +123,8 @@ vim.api.nvim_set_hl(0, "LineNrAbove", { foreground = "LightYellow" })
 vim.api.nvim_set_hl(0, "LineNr", { foreground = "White" })
 vim.api.nvim_set_hl(0, "LineNrBelow", { foreground = "LightBlue" })
 
+vim.api.nvim_set_hl(0, "MatchParen", { background = "#0000ff" })
+
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -130,6 +142,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "master",
         config = function()
             require("nvim-treesitter.configs").setup({
                 auto_install = true,
@@ -143,7 +156,7 @@ require("lazy").setup({
     {
         "mbbill/undotree",
         keys = {
-            { "<leader>ut", "<cmd>UndotreeToggle<CR><C-w>h<C-w>h<C-w>h<C-w>h" }
+            { "<leader>u", "<cmd>UndotreeToggle<CR><C-w>h<C-w>h<C-w>h<C-w>h" }
         },
     },
     {
@@ -178,6 +191,8 @@ require("lazy").setup({
     "tpope/vim-repeat",
     "tpope/vim-surround",
     "tpope/vim-commentary",
+    "tpope/vim-fugitive",
+
     {
         "neovim/nvim-lspconfig",
         dependencies = {
@@ -308,4 +323,31 @@ require("lazy").setup({
             vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
         end,
     },
+
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = {
+            signs = {
+                add          = { text = '+' },
+                change       = { text = '~' },
+                -- delete       = { text = '_' },
+                -- topdelete    = { text = '‾' },
+                -- changedelete = { text = '~' },
+                -- untracked    = { text = '┆' },
+            },
+            on_attach = function()
+                local gitsigns = require("gitsigns")
+                vim.keymap.set("n", "<leader>K", gitsigns.preview_hunk)
+            end
+        },
+    },
+    {
+        "stevearc/oil.nvim",
+        opts = {},
+        config = function()
+            local oil = require("oil")
+            oil.setup({})
+            vim.keymap.set("n", "<leader>ff", oil.open)
+        end
+    }
 })
