@@ -116,14 +116,24 @@ vim.api.nvim_set_hl(0, "FloatBorder", { foreground = nil, background = nil })
 vim.api.nvim_set_hl(0, "DiagnosticError", { foreground = "White", background = "DarkRed" })
 vim.api.nvim_set_hl(0, "DiagnosticWarn", { foreground = "Yellow" })
 
--- rust analyzer makes this navy blue by default for some reason
 vim.api.nvim_set_hl(0, "CmpItemAbbr", { foreground = "White" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { foreground = "Yellow" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { foreground = "Yellow" })
+
+vim.api.nvim_set_hl(0, "CmpItemKind", { foreground = "White" })
+-- todo: specific kinds having different colors
 
 vim.api.nvim_set_hl(0, "LineNrAbove", { foreground = "LightYellow" })
 vim.api.nvim_set_hl(0, "LineNr", { foreground = "White" })
 vim.api.nvim_set_hl(0, "LineNrBelow", { foreground = "LightBlue" })
 
 vim.api.nvim_set_hl(0, "MatchParen", { background = "#0000ff" })
+
+-- contents[index] = string.format("%%#HarpoonNumberInactive# [%s] %%#HarpoonInactive#%s ", index, file_name)
+vim.api.nvim_set_hl(0, "HarpoonNumberActive", { background = "Gray", foreground = "White" })
+vim.api.nvim_set_hl(0, "HarpoonActive", { background = "Gray", foreground = "White" })
+vim.api.nvim_set_hl(0, "HarpoonNumberInactive", { background = "Black", foreground = "White" })
+vim.api.nvim_set_hl(0, "HarpoonInactive", { background = "Black", foreground = "White" })
 
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -309,7 +319,10 @@ require("lazy").setup({
             local harpoon = require("harpoon")
             harpoon:setup({})
 
-            vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+            vim.keymap.set("n", "<leader>a", function()
+                harpoon:list():add()
+                vim.cmd(":do User")
+            end)
             vim.keymap.set("n", "<leader>s", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
             vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
@@ -321,6 +334,49 @@ require("lazy").setup({
             vim.keymap.set("n", "<leader>7", function() harpoon:list():select(7) end)
             vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end)
             vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
+
+            -- thx @lokxii, exactly what i wanted (https://github.com/ThePrimeagen/harpoon/issues/352#issuecomment-1893131934)
+            function Harpoon_files()
+                local contents = {}
+                local marks_length = harpoon:list():length()
+                local current_file_path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+
+                for index = 1, marks_length do
+                    -- https://github.com/ThePrimeagen/harpoon/issues/555
+                    local success, harpoon_file_path = pcall(function()
+                        return harpoon:list():get(index).value
+                    end)
+
+                    if not success then
+                        return ""
+                    end
+
+                    local file_name = harpoon_file_path == "" and "(empty)" or vim.fn.fnamemodify(harpoon_file_path, ':t')
+
+                    if current_file_path == harpoon_file_path then
+                        contents[index] = string.format("%%#HarpoonNumberActive# [%s] %%#HarpoonActive#%s ", index, file_name)
+                    else
+                        contents[index] = string.format("%%#HarpoonNumberInactive# [%s] %%#HarpoonInactive#%s ", index, file_name)
+                    end
+                end
+
+                return table.concat(contents)
+            end
+
+            vim.opt.showtabline = 2
+            vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "User" }, {
+                callback = function(_)
+                    local result = Harpoon_files()
+
+                    if result == "" then
+                        vim.opt.showtabline = 1
+                    else
+                        vim.opt.showtabline = 2
+                    end
+
+                    vim.o.tabline = result
+                end
+            })
         end,
     },
 
