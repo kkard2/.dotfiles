@@ -106,6 +106,33 @@ vim.keymap.set("n", "<leader>td", function()
     vim.cmd("silent !ctags -aR .")
 end)
 
+-- maybe i'll return to this, for now i can't be bothered
+
+-- vim.keymap.set("n", ".", function()
+--     local bufnr = vim.api.nvim_get_current_buf()
+--     local bufinfo = vim.fn.getbufinfo(bufnr)[1];
+--     local bufname = bufinfo.name;
+
+--     if vim.startswith(bufname, "oil:///") then
+--         if bufinfo.changed ~= 0 then
+--             vim.print("save changes first")
+--             return
+--         end
+
+--         local filename = vim.fn.input("New file:")
+
+--         if filename == "" then
+--             return
+--         end
+
+--         vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
+--             "o" .. filename .. "<Esc>", true, false, true))
+--         vim.cmd.write()
+--     else
+--         vim.api.nvim_feedkeys(".", "n", false)
+--     end
+-- end)
+
 -- colorscheme
 
 vim.cmd("colorscheme industry")
@@ -158,6 +185,9 @@ require("lazy").setup({
                 auto_install = true,
                 highlight = {
                     enable = true,
+                },
+                ignore_install = {
+                    "haskell", -- hangs terminal window in certain cases
                 },
             })
             vim.cmd("TSUpdate")
@@ -233,6 +263,8 @@ require("lazy").setup({
                     map("<leader><CR>", vim.lsp.buf.code_action, "Code Action")
                     map("K", vim.lsp.buf.hover, "Hover Documentation")
                     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+                    vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help)
                 end,
             })
 
