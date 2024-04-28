@@ -35,6 +35,8 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 vim.g.netrw_banner = 0
 
+vim.g.zig_fmt_autosave = 0 -- this is pretty annoying
+
 vim.opt.signcolumn = "yes"
 vim.opt.list = true
 
@@ -260,6 +262,7 @@ require("lazy").setup({
                     map("]d", vim.diagnostic.goto_prev, "Prev [D]iagnostic")
 
                     map("<leader>lr", vim.lsp.buf.rename, "[L]SP [R]ename")
+                    map("<leader>lf", vim.lsp.buf.format, "[L]SP [F]ormat")
                     map("<leader><CR>", vim.lsp.buf.code_action, "Code Action")
                     map("K", vim.lsp.buf.hover, "Hover Documentation")
                     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -324,17 +327,17 @@ require("lazy").setup({
                     ["<C-n>"] = cmp.mapping.select_next_item(),
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
                     ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                    ["<C-l>"] = cmp.mapping(function()
+                        if luasnip.expand_or_locally_jumpable() then
+                            luasnip.expand_or_jump()
+                        end
+                    end, { "i", "s" }),
+                    ["<C-h>"] = cmp.mapping(function()
+                        if luasnip.locally_jumpable(-1) then
+                            luasnip.jump(-1)
+                        end
+                    end, { "i", "s" }),
                 }),
-                ["<C-l>"] = cmp.mapping(function()
-                    if luasnip.expand_or_locally_jumpable() then
-                        luasnip.expand_or_jump()
-                    end
-                end, { "i", "s" }),
-                ["<C-h>"] = cmp.mapping(function()
-                    if luasnip.locally_jumpable(-1) then
-                        luasnip.jump(-1)
-                    end
-                end, { "i", "s" }),
             })
         end
 
