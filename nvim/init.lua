@@ -201,6 +201,7 @@ require("lazy").setup({
                 },
                 ignore_install = {
                     "haskell", -- hangs terminal window in certain cases
+                    "html",
                 },
             })
             vim.cmd("TSUpdate")
