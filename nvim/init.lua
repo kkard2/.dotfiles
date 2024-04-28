@@ -146,11 +146,22 @@ vim.api.nvim_set_hl(0, "DiagnosticError", { foreground = "White", background = "
 vim.api.nvim_set_hl(0, "DiagnosticWarn", { foreground = "Yellow" })
 
 vim.api.nvim_set_hl(0, "CmpItemAbbr", { foreground = "White" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrDefault", { foreground = "White" })
 vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { foreground = "Yellow" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchDefault", { foreground = "Yellow" })
 vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { foreground = "Yellow" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzyDefault", { foreground = "Yellow" })
 
 vim.api.nvim_set_hl(0, "CmpItemKind", { foreground = "White" })
--- todo: specific kinds having different colors
+vim.api.nvim_set_hl(0, "CmpItemKindDefault", { foreground = "White" })
+vim.api.nvim_set_hl(0, "CmpItemKindConstant", { foreground = "Red" })
+vim.api.nvim_set_hl(0, "CmpItemKindStruct", { foreground = "Lime" })
+vim.api.nvim_set_hl(0, "CmpItemKindClass", { foreground = "Lime" })
+
+vim.api.nvim_set_hl(0, "CmpItemMenu", { foreground = "Cyan" })
+vim.api.nvim_set_hl(0, "CmpItemMenuDefault", { foreground = "Cyan" })
+
+vim.api.nvim_set_hl(0, "CmpItemMenuDefault", { foreground = "Cyan" })
 
 vim.api.nvim_set_hl(0, "LineNrAbove", { foreground = "LightYellow" })
 vim.api.nvim_set_hl(0, "LineNr", { foreground = "White" })
@@ -203,7 +214,7 @@ require("lazy").setup({
     },
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.4",
+        tag = "0.1.6",
         dependencies = { "nvim-lua/plenary.nvim" },
         lazy = true,
         keys = {
