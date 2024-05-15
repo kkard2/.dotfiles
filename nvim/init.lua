@@ -24,7 +24,7 @@ vim.opt.scrolloff = 2
 
 vim.opt.colorcolumn = "80,100,120"
 
-vim.api.nvim_create_autocmd({"BufEnter"}, {
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
     callback = function()
         vim.cmd("set formatoptions-=r")
         vim.cmd("set formatoptions-=o")
@@ -408,12 +408,15 @@ require("lazy").setup({
                         return ""
                     end
 
-                    local file_name = harpoon_file_path == "" and "(empty)" or vim.fn.fnamemodify(harpoon_file_path, ':t')
+                    local file_name = harpoon_file_path == "" and "(empty)" or
+                    vim.fn.fnamemodify(harpoon_file_path, ':t')
 
                     if current_file_path == harpoon_file_path then
-                        contents[index] = string.format("%%#HarpoonNumberActive# [%s] %%#HarpoonActive#%s ", index, file_name)
+                        contents[index] = string.format("%%#HarpoonNumberActive# [%s] %%#HarpoonActive#%s ", index,
+                            file_name)
                     else
-                        contents[index] = string.format("%%#HarpoonNumberInactive# [%s] %%#HarpoonInactive#%s ", index, file_name)
+                        contents[index] = string.format("%%#HarpoonNumberInactive# [%s] %%#HarpoonInactive#%s ", index,
+                            file_name)
                     end
                 end
 
@@ -441,8 +444,8 @@ require("lazy").setup({
         "lewis6991/gitsigns.nvim",
         opts = {
             signs = {
-                add          = { text = '+' },
-                change       = { text = '~' },
+                add    = { text = '+' },
+                change = { text = '~' },
                 -- delete       = { text = '_' },
                 -- topdelete    = { text = '‾' },
                 -- changedelete = { text = '~' },
