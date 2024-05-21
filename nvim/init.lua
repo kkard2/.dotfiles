@@ -382,6 +382,16 @@ require("lazy").setup({
             vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end)
             vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
 
+            vim.keymap.set("n", "1<leader>", function() harpoon:list():select(1) end)
+            vim.keymap.set("n", "2<leader>", function() harpoon:list():select(2) end)
+            vim.keymap.set("n", "3<leader>", function() harpoon:list():select(3) end)
+            vim.keymap.set("n", "4<leader>", function() harpoon:list():select(4) end)
+            vim.keymap.set("n", "5<leader>", function() harpoon:list():select(5) end)
+            vim.keymap.set("n", "6<leader>", function() harpoon:list():select(6) end)
+            vim.keymap.set("n", "7<leader>", function() harpoon:list():select(7) end)
+            vim.keymap.set("n", "8<leader>", function() harpoon:list():select(8) end)
+            vim.keymap.set("n", "9<leader>", function() harpoon:list():select(9) end)
+
             -- thx @lokxii, exactly what i wanted (https://github.com/ThePrimeagen/harpoon/issues/352#issuecomment-1893131934)
             function Harpoon_files()
                 local contents = {}
