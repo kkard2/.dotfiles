@@ -461,6 +461,7 @@ require("lazy").setup({
             local oil = require("oil")
             oil.setup({})
             vim.keymap.set("n", "<leader>ff", oil.open)
+            vim.keymap.set("n", "-", oil.open) -- stolen from teej, makes sense
         end
     }
 })
