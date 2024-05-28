@@ -13,12 +13,18 @@ matches:
     image_path: $CONFIG/assets/img/extreme.png
   - trigger: ;;ihuh
     image_path: $CONFIG/assets/img/huh.png
+  - trigger: ;;iint
+    image_path: $CONFIG/assets/img/int.png
+  - trigger: ;;ijez
+    image_path: $CONFIG/assets/img/jez.png
   - trigger: ;;ikot
     image_path: $CONFIG/assets/img/kot.png
   - trigger: ;;imiska
     image_path: $CONFIG/assets/img/miska.png
   - trigger: ;;inormal
     image_path: $CONFIG/assets/img/normal.png
+  - trigger: ;;iort
+    image_path: $CONFIG/assets/img/ort.png
   - trigger: ;;ipipe
     image_path: $CONFIG/assets/img/pipe.png
   - trigger: ;;isi
