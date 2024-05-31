@@ -57,3 +57,5 @@ matches:
     replace: 😟
   - trigger: ;;alien
     replace: 👽
+  - trigger: ;;cold
+    replace: 🥶
