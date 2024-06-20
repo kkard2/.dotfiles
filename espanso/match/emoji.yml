@@ -59,3 +59,5 @@ matches:
     replace: 👽
   - trigger: ;;cold
     replace: 🥶
+  - trigger: ;;write
+    replace:  ✍️
