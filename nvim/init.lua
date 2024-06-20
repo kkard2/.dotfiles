@@ -75,9 +75,33 @@ vim.keymap.set("n", "<C-j>", function()
     local char = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
 
     if char == " " then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("\"_xi<CR><Esc>f ", true, true, true))
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("\"_xi<CR><Esc>", true, true, true))
     else
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("i<CR><Esc>f ", true, true, true))
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("i<CR><Esc>", true, true, true))
+    end
+
+    col = vim.api.nvim_win_get_cursor(0)[2]
+    local line = vim.api.nvim_get_current_line()
+    local target_char = ","
+
+    -- Check if a comma exists after the cursor
+    local comma_pos = line:sub(col + 1):find(target_char)
+
+    if not comma_pos then
+        -- If no comma found, check for space instead
+        target_char = " "
+        local space_pos = line:sub(col + 1):find(target_char)
+
+        if space_pos then
+            comma_pos = space_pos
+        end
+    end
+    if comma_pos then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes(comma_pos .. "l", true, true, true))
+
+        if char ~= " " then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("l", true, true, true))
+        end
     end
 end)
 
@@ -409,7 +433,7 @@ require("lazy").setup({
                     end
 
                     local file_name = harpoon_file_path == "" and "(empty)" or
-                    vim.fn.fnamemodify(harpoon_file_path, ':t')
+                        vim.fn.fnamemodify(harpoon_file_path, ':t')
 
                     if current_file_path == harpoon_file_path then
                         contents[index] = string.format("%%#HarpoonNumberActive# [%s] %%#HarpoonActive#%s ", index,
