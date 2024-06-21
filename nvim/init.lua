@@ -160,12 +160,32 @@ end)
 -- end)
 
 -- c is a language for some reason
-vim.api.nvim_create_user_command("DefineMode", function ()
+vim.api.nvim_create_user_command("DefineMode", function()
+    -- this should not be here
+    vim.cmd([[
+        highlight DefineModeStatus guifg=#ffffff guibg=#ff00ff
+        set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+        set statusline+=\ %#DefineModeStatus#\ DEFINE\ MODE
+        set statusline+=\ %*
+        set statusline+=\ ft=%{&filetype}
+        set statusline+=\ ff=%{&fileformat}
+        set statusline+=\ spaces=%{&expandtab}
+        set statusline+=%{get(b:,'\ \ gitsigns_status','')}
+    ]])
     vim.keymap.set("i", "<CR>", "<CR><Esc>kA\\<Esc>j^i")
     vim.keymap.set("n", "o", "o\\<Esc>i")
     vim.keymap.set("n", "O", "O\\<Esc>i")
 end, {})
-vim.api.nvim_create_user_command("NoDefineMode", function ()
+vim.api.nvim_create_user_command("NoDefineMode", function()
+    -- this should not be here
+    vim.cmd([[
+        set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+        set statusline+=\ ft=%{&filetype}
+        set statusline+=\ ff=%{&fileformat}
+        set statusline+=\ spaces=%{&expandtab}
+        set statusline+=%{get(b:,'\ \ gitsigns_status','')}
+    ]])
+
     vim.keymap.del("i", "<CR>")
     vim.keymap.del("n", "o")
     vim.keymap.del("n", "O")
