@@ -159,6 +159,20 @@ end)
 --     end
 -- end)
 
+-- c is a language for some reason
+vim.api.nvim_create_user_command("DefineMode", function ()
+    vim.keymap.set("i", "<CR>", "<CR><Esc>kA\\<Esc>j^i")
+    vim.keymap.set("n", "o", "o\\<Esc>i")
+    vim.keymap.set("n", "O", "O\\<Esc>i")
+end, {})
+vim.api.nvim_create_user_command("NoDefineMode", function ()
+    vim.keymap.del("i", "<CR>")
+    vim.keymap.del("n", "o")
+    vim.keymap.del("n", "O")
+end, {})
+
+
+
 -- colorscheme
 
 vim.cmd("colorscheme industry")
