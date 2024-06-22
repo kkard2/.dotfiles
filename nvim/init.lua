@@ -160,38 +160,34 @@ end)
 -- end)
 
 -- c is a language for some reason
-vim.api.nvim_create_user_command("DefineMode", function()
-    -- this should not be here
-    vim.cmd([[
-        highlight DefineModeStatus guifg=#ffffff guibg=#ff00ff
-        set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-        set statusline+=\ %#DefineModeStatus#\ DEFINE\ MODE
-        set statusline+=\ %*
-        set statusline+=\ ft=%{&filetype}
-        set statusline+=\ ff=%{&fileformat}
-        set statusline+=\ spaces=%{&expandtab}
-        set statusline+=%{get(b:,'\ \ gitsigns_status','')}
-    ]])
-    vim.keymap.set("i", "<CR>", "<CR><Esc>kA\\<Esc>j^i")
-    vim.keymap.set("n", "o", "o\\<Esc>i")
-    vim.keymap.set("n", "O", "O\\<Esc>i")
-end, {})
-vim.api.nvim_create_user_command("NoDefineMode", function()
-    -- this should not be here
-    vim.cmd([[
-        set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-        set statusline+=\ ft=%{&filetype}
-        set statusline+=\ ff=%{&fileformat}
-        set statusline+=\ spaces=%{&expandtab}
-        set statusline+=%{get(b:,'\ \ gitsigns_status','')}
-    ]])
+vim.api.nvim_create_user_command("Backslash", function()
+    local start_pos = vim.fn.getpos("'<")[2]
+    local end_pos = vim.fn.getpos("'>")[2]
+    local position = 78
 
-    vim.keymap.del("i", "<CR>")
-    vim.keymap.del("n", "o")
-    vim.keymap.del("n", "O")
-end, {})
+    ---@type string[]
+    ---@diagnostic disable-next-line: assign-type-mismatch
+    local lines = vim.fn.getline(start_pos, end_pos)
 
+    for i, line in ipairs(lines) do
+        local trimmed_line = vim.fn.trim(line)
+        if trimmed_line:sub(-1) == "\\" then
+            -- Line already ends with a backslash, remove it
+            line = line:sub(1, #trimmed_line - 1)
+        end
 
+        local len = #line
+        if len < position then
+            lines[i] = line .. string.rep(' ', position - len) .. '\\'
+        elseif len == position then
+            lines[i] = line .. '\\'
+        else
+            lines[i] = line:sub(1, position - 1) .. '\\' .. line:sub(position)
+        end
+    end
+
+    vim.fn.setline(start_pos, lines)
+end, { range = true })
 
 -- colorscheme
 
