@@ -57,6 +57,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+w exec firefox
 
 # kill focused window
 bindsym $mod+c kill
@@ -104,7 +105,7 @@ bindsym $mod+apostrophe split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout tabbed
+bindsym $mod+z layout stacked
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
