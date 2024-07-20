@@ -350,10 +350,6 @@ require("lazy").setup({
                         },
                     },
                 },
-                -- just default to something bro
-                omnisharp = {
-                    cmd = { "OmniSharp.exe" }
-                }
             }
 
             require("mason").setup()
