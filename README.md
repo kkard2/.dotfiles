@@ -5,6 +5,7 @@ config stuff (i need to move everything into one place)
 * `~/.ideavimrc` -> `./idea/.ideavimrc`
 * `$XDG_CONFIG_HOME/espanso` -> `./espanso`
 * `$XDG_CONFIG_HOME/nvim` -> `./nvim`
+* `$XDG_CONFIG_HOME/kanata` -> `./kanata`
 
 # other config
 * `~/.gitconfig`
