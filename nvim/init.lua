@@ -229,6 +229,25 @@ vim.api.nvim_set_hl(0, "HarpoonActive", { background = "Gray", foreground = "Whi
 vim.api.nvim_set_hl(0, "HarpoonNumberInactive", { background = "Black", foreground = "White" })
 vim.api.nvim_set_hl(0, "HarpoonInactive", { background = "Black", foreground = "White" })
 
+
+vim.api.nvim_create_autocmd('FileType', {
+    -- This handler will fire when the buffer's 'filetype' is "python"
+    pattern = 'zig',
+    callback = function(ev)
+        vim.lsp.start({
+            name = 'zls',
+            cmd = {'zls'},
+
+            -- Set the "root directory" to the parent directory of the file in the
+            -- current buffer (`ev.buf`) that contains either a "setup.py" or a
+            -- "pyproject.toml" file. Files that share a root directory will reuse
+            -- the connection to the same LSP server.
+            root_dir = vim.fs.root(ev.buf, {'build.zig', '.gitignore'}),
+        })
+    end,
+})
+
+
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
