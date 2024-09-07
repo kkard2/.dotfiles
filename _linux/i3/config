@@ -19,6 +19,9 @@ font pango:monospace 9
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# mute by default
+exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ true
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
