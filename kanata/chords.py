@@ -22,10 +22,10 @@ for keys, macro in chord_data.items():
             macro_formatted += f"(unicode {char}) "
 
     macro_formatted = macro_formatted.strip()
-    release = "all-released"
+    release = "first-release"
 
     chord_line = f"  ({keys_formatted}) (macro {first_char_macro} {
-        macro_formatted}) 75 {release} (arrows)\n"
+        macro_formatted}) 75 {release} (gaming)\n"
     output += chord_line
 
 output += ")\n"

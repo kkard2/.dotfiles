@@ -1,7 +1,7 @@
 (defcfg
   process-unmapped-keys yes
   concurrent-tap-hold yes
-  chords-v2-min-idle-experimental 200
+  chords-v2-min-idle-experimental 5
 )
 
 (defsrc
@@ -10,6 +10,9 @@
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc            ralt rmet rctl
+
+  NumpadDivide
+  NumpadMultiply
 )
 
 (deflayer default
@@ -18,6 +21,20 @@
   @cap _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
+
+  (layer-switch default)
+  (layer-switch gaming)
+)
+
+(deflayer gaming
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  @cap _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+
+  (layer-switch default)
+  (layer-switch gaming)
 )
 
 (deflayer arrows
@@ -26,6 +43,9 @@
   _    _    _    _    _    _    left down up   rght _    _    _
   _    _    _    _    _    @cle _    _    _    _    _    _
   _    _    _              _              _    _    _
+
+  _
+  _
 )
 
 (defalias
@@ -35,7 +55,3 @@
 )
 
 (include chords.kbd)
-
-;;(defchordsv2-experimental
-;;  (a s d) (macro h (unshift e) (unshift l) (unshift l) (unshift o)) 75 all-released (arrows)
-;;)
