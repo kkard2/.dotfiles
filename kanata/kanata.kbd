@@ -54,4 +54,5 @@
   crg C-rght
 )
 
-(include chords.kbd)
+;; https://github.com/jtroo/kanata/issues/1232
+;; (include chords.kbd)

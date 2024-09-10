@@ -4,6 +4,8 @@ chord_data = {
     "praw": "prawdopodobnie",
     "pro": "probably",
     "com": "co masz na myśli",
+    "spr": "sprawiedliwe",
+    "spa": "spać mi się chce",
 }
 
 output = "(defchordsv2-experimental\n"
