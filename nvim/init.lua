@@ -353,6 +353,16 @@ require("lazy").setup({
                     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
                     vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help)
+
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        callback = function(_)
+                            local ft = vim.api.nvim_buf_get_option(0, "filetype")
+
+                            if ft == "rust" or ft == "zig" then
+                                vim.lsp.buf.format()
+                            end
+                        end
+                    })
                 end,
             })
 
