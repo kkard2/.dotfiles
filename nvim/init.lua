@@ -248,6 +248,14 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "xml",
+  callback = function()
+    vim.opt_local.autoindent = false
+    vim.opt_local.smartindent = false
+    vim.opt_local.cindent = false
+  end,
+})
 
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
