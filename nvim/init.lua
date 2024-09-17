@@ -42,7 +42,8 @@ vim.opt.list = true
 
 vim.o.exrc = true
 
-vim.keymap.set("n", "<leader>w", vim.cmd.write)
+-- i want to disable this for now
+-- vim.keymap.set("n", "<leader>w", vim.cmd.write)
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
