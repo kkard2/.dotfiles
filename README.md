@@ -7,6 +7,7 @@ config stuff (i need to move everything into one place)
 * `$XDG_CONFIG_HOME/nvim` -> `./nvim`
 * `$XDG_CONFIG_HOME/kanata` -> `./kanata`
 * `$XDG_CONFIG_HOME/mpv` -> `./mpv`
+* `$XDG_CONFIG_HOME/alacritty` -> `./alacritty`
 
 # other config
 * `~/.gitconfig`
