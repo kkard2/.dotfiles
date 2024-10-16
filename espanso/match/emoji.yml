@@ -63,3 +63,5 @@ matches:
     replace:  ✍️
   - trigger: ;;pray
     replace: 🙏
+  - trigger: ;;clown
+    replace: 🤡
