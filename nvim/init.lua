@@ -24,6 +24,7 @@ vim.opt.scrolloff = 2
 
 vim.opt.colorcolumn = "80,100,120"
 
+-- i have no idea why it's here, i'm too afraid to yeet it
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
     callback = function()
         vim.cmd("set formatoptions-=r")
@@ -31,19 +32,13 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end
 })
 
-
-vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
-vim.g.netrw_banner = 0
-
-vim.g.zig_fmt_autosave = 0 -- this is pretty annoying
+-- removed because i do autosaves now to test if they're good (they're not)
+-- vim.g.zig_fmt_autosave = 0 -- this is pretty annoying
 
 vim.opt.signcolumn = "yes"
 vim.opt.list = true
 
 vim.o.exrc = true
-
--- i want to disable this for now
--- vim.keymap.set("n", "<leader>w", vim.cmd.write)
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -118,6 +113,18 @@ vim.keymap.set("n", "<leader>tt", function()
     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-l>", true, true, true))
 end)
 
+vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+    pattern = {"*.*"},
+    desc = "save view (folds), when closing file",
+    command = "mkview",
+})
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+    pattern = {"*.*"},
+    desc = "load view (folds), when opening file",
+    command = "silent! loadview"
+})
+
+-- statusline
 vim.cmd([[set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P]]) --default
 vim.cmd([[set statusline+=\ ft=%{&filetype}]])
 vim.cmd([[set statusline+=\ ff=%{&fileformat}]])
@@ -132,63 +139,6 @@ end)
 vim.keymap.set("n", "<leader>td", function()
     vim.cmd("silent !ctags -aR .")
 end)
-
--- maybe i'll return to this, for now i can't be bothered
-
--- vim.keymap.set("n", ".", function()
---     local bufnr = vim.api.nvim_get_current_buf()
---     local bufinfo = vim.fn.getbufinfo(bufnr)[1];
---     local bufname = bufinfo.name;
-
---     if vim.startswith(bufname, "oil:///") then
---         if bufinfo.changed ~= 0 then
---             vim.print("save changes first")
---             return
---         end
-
---         local filename = vim.fn.input("New file:")
-
---         if filename == "" then
---             return
---         end
-
---         vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
---             "o" .. filename .. "<Esc>", true, false, true))
---         vim.cmd.write()
---     else
---         vim.api.nvim_feedkeys(".", "n", false)
---     end
--- end)
-
--- c is a language for some reason
-vim.api.nvim_create_user_command("Backslash", function()
-    local start_pos = vim.fn.getpos("'<")[2]
-    local end_pos = vim.fn.getpos("'>")[2]
-    local position = 78
-
-    ---@type string[]
-    ---@diagnostic disable-next-line: assign-type-mismatch
-    local lines = vim.fn.getline(start_pos, end_pos)
-
-    for i, line in ipairs(lines) do
-        local trimmed_line = vim.fn.trim(line)
-        if trimmed_line:sub(-1) == "\\" then
-            -- Line already ends with a backslash, remove it
-            line = line:sub(1, #trimmed_line - 1)
-        end
-
-        local len = #line
-        if len < position then
-            lines[i] = line .. string.rep(' ', position - len) .. '\\'
-        elseif len == position then
-            lines[i] = line .. '\\'
-        else
-            lines[i] = line:sub(1, position - 1) .. '\\' .. line:sub(position)
-        end
-    end
-
-    vim.fn.setline(start_pos, lines)
-end, { range = true })
 
 -- colorscheme
 
@@ -249,12 +199,12 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "xml",
-  callback = function()
-    vim.opt_local.autoindent = false
-    vim.opt_local.smartindent = false
-    vim.opt_local.cindent = false
-  end,
+    pattern = "xml",
+    callback = function()
+        vim.opt_local.autoindent = false
+        vim.opt_local.smartindent = false
+        vim.opt_local.cindent = false
+    end,
 })
 
 -- lazy.nvim
@@ -444,7 +394,6 @@ require("lazy").setup({
                 }),
             })
         end
-
     },
     {
         "L3MON4D3/LuaSnip",
