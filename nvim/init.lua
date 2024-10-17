@@ -180,6 +180,8 @@ vim.api.nvim_set_hl(0, "HarpoonActive", { background = "Gray", foreground = "Whi
 vim.api.nvim_set_hl(0, "HarpoonNumberInactive", { background = "Black", foreground = "White" })
 vim.api.nvim_set_hl(0, "HarpoonInactive", { background = "Black", foreground = "White" })
 
+vim.api.nvim_set_hl(0, "DapBreakpoint", { background = "Red", foreground = "white" })
+vim.api.nvim_set_hl(0, "DapStopped", { background = "#222222" })
 
 vim.api.nvim_create_autocmd('FileType', {
     -- This handler will fire when the buffer's 'filetype' is "python"
@@ -507,5 +509,72 @@ require("lazy").setup({
             vim.keymap.set("n", "<leader>ff", oil.open)
             vim.keymap.set("n", "-", oil.open) -- stolen from teej, makes sense
         end
-    }
+    },
+    {
+        "mfussenegger/nvim-dap",
+        keys = {
+            {
+                "\\r",
+                function()
+                    local dap = require("dap")
+
+                    dap.run(dap.configurations[vim.bo.filetype], {
+                        before = function(conf)
+                        end
+                    })
+                    -- dap.configurations
+                    -- dap.run
+                end,
+            },
+            { "\\c", function() require("dap").continue() end },
+            { "\\p", function() require("dap").pause() end },
+
+            { "\\b", function() require("dap").toggle_breakpoint() end },
+            { "\\B", function() require("dap").set_breakpoint(vim.fn.input("condition> ")) end },
+
+            { "\\j", function() require("dap").step_into() end },
+            { "\\k", function() require("dap").step_out() end },
+            { "<C-\\>", function() require("dap").step_over() end },
+
+            { "\\R", function() require("dap").run_to_cursor() end },
+            { "\\s", function() require("dap").close() end },
+        },
+
+        config = function()
+            local dap = require("dap")
+            dap.adapters.coreclr = {
+                type = "executable",
+                command = "netcoredbg",
+                args = { "--interpreter=vscode" },
+            };
+            dap.configurations.cs = {
+                {
+                    type = "coreclr",
+                    name = "launch - netcoredbg",
+                    request = "launch",
+                    program = function()
+                        local runfile = io.open("program.txt", "r")
+
+                        if runfile then
+                            local line = runfile:read("*l")
+                            runfile:close()
+                            return line
+                        end
+
+                        return vim.fn.input(
+                            "Path to dll",
+                            vim.fn.getcwd() .. "/bin/Debug/",
+                            "file"
+                        )
+                    end,
+                },
+            }
+
+            local sign = vim.fn.sign_define
+
+            sign("DapBreakpoint", { text = "b", texthl = "DapBreakpoint", linehl = "", numhl = ""})
+            sign("DapBreakpointCondition", { text = "B", texthl = "DapBreakpoint", linehl = "", numhl = ""})
+            sign('DapStopped', { text='>', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
+        end
+    },
 })
