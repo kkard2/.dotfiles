@@ -516,15 +516,19 @@ require("lazy").setup({
             {
                 "\\r",
                 function()
-                    local dap = require("dap")
+                    local runfile = io.open("compile.txt", "r")
 
-                    dap.run(dap.configurations[vim.bo.filetype], {
-                        before = function(conf)
-                        end
-                    })
-                    -- dap.configurations
-                    -- dap.run
-                end,
+                    if runfile then
+                        local line = runfile:read("*l")
+                        runfile:close()
+                        os.execute(line)
+                    else
+                        print("hurr durr create compile.txt")
+                        return
+                    end
+
+                    require("dap").continue()
+                end
             },
             { "\\c", function() require("dap").continue() end },
             { "\\p", function() require("dap").pause() end },
@@ -553,16 +557,16 @@ require("lazy").setup({
                     name = "launch - netcoredbg",
                     request = "launch",
                     program = function()
-                        local runfile = io.open("program.txt", "r")
+                        local programfile = io.open("program.txt", "r")
 
-                        if runfile then
-                            local line = runfile:read("*l")
-                            runfile:close()
-                            return line
+                        if programfile then
+                            local line = programfile:read("*l")
+                            programfile:close()
+                            return vim.fn.getcwd() .. "/" .. line
                         end
 
                         return vim.fn.input(
-                            "Path to dll",
+                            "Path to dll >",
                             vim.fn.getcwd() .. "/bin/Debug/",
                             "file"
                         )
