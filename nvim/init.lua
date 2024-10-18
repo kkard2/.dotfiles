@@ -543,6 +543,7 @@ require("lazy").setup({
 
             { "\\R", function() require("dap").run_to_cursor() end },
             { "\\s", function() require("dap").close() end },
+            { "<leader>\\", function() require("dap").repl.toggle() end },
         },
 
         config = function()
