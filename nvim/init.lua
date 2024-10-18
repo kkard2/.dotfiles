@@ -517,17 +517,18 @@ require("lazy").setup({
                 "\\r",
                 function()
                     local runfile = io.open("compile.txt", "r")
-
                     if runfile then
                         local line = runfile:read("*l")
                         runfile:close()
-                        os.execute(line)
+                        vim.fn.jobstart(line, {
+                            on_exit = function()
+                                require("dap").continue()
+                            end,
+                        })
                     else
                         print("hurr durr create compile.txt")
                         return
                     end
-
-                    require("dap").continue()
                 end
             },
             { "\\c", function() require("dap").continue() end },
