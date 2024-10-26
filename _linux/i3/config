@@ -167,6 +167,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 
 for_window [class="^firefox$" instance="^Alert$"] floating enable
+for_window [class="^firefox$" instance="^Alert$"] floating enable
+for_window [class="^ninjabrainbot"] floating enable
 
 workspace "8" output nonprimary
 workspace "9" output nonprimary
