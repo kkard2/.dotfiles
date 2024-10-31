@@ -88,9 +88,9 @@ nmap <leader><leader> <Action>(GotoFile)
 nmap <leader>a <Action>(GotoAction)
 
 " goto is a bad language feature
-nmap gd <Action>(GotoDeclaration)
-nmap gi <Action>(GotoImplementation)
-nmap gr <Action>(FindUsages)
+nmap gd m'<Action>(GotoDeclaration)
+nmap gi m'<Action>(GotoImplementation)
+nmap gr m'<Action>(FindUsages)
 
 " debugging
 nmap \b <Action>(ToggleLineBreakpoint)
