@@ -110,6 +110,9 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+space floating toggle
 
+# boateye mentioned? (i'm still not hitting it)
+bindsym $mod+g fullscreen toggle; floating toggle ; resize set 384 16384 ; move position center
+
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
 
