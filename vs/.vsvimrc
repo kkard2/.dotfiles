@@ -5,6 +5,8 @@ set hlsearch
 map <Space>lr :vsc Refactor.Rename<CR>
 map gi :vsc Edit.GoToImplementation<CR>
 map gr :vsc Edit.FindAllReferences<CR>
+map gc :vsc Edit.CommentSelection<CR>
+map gu :vsc Edit.UncommentSelection<CR>
 map <Space><Space> :vsc Window.QuickLaunch<CR>
 
 map ,d :vsc Debug.Start<CR>
