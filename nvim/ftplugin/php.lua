@@ -1,4 +1,10 @@
-local copy_indent_macro = "<Esc>0\"_d$?.<CR><cmd>noh<CR>0\"myw<C-o>0\"_d$\"mpa"
+local copy_indent_macro = "<Esc>0\"_D" -- clear current line
+    .. "?.<CR>" -- find first non-empty line above
+    .. "^\"yy0" -- copy indentation to y register
+    .. "<C-o>" -- return to original line
+    .. "\"yp" -- paste y register
+    .. "<cmd>noh<CR>" -- clear highlight
+    .. "A" -- enter insert mode
 
 vim.keymap.set({ "n" }, "o", "o" .. copy_indent_macro, { buffer = 0 })
 vim.keymap.set({ "n" }, "O", "O" .. copy_indent_macro, { buffer = 0 })
