@@ -210,15 +210,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "php",
-    callback = function()
-        vim.keymap.set({ "n" }, "o", "o" .. copy_indent_macro)
-        vim.keymap.set({ "n" }, "O", "O" .. copy_indent_macro)
-        vim.keymap.set({ "i" }, "<CR>", "<CR>" .. copy_indent_macro)
-    end,
-})
-
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
