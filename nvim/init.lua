@@ -64,7 +64,8 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
 
 -- copy indent from line above
-vim.keymap.set("i", "<S-Tab>", "<Esc>0\"_d$?.<CR><cmd>noh<CR>0\"myw<C-o>0\"_d$\"mpa")
+local copy_indent_macro = "<Esc>0\"_d$?.<CR><cmd>noh<CR>0\"myw<C-o>0\"_d$\"mpa"
+vim.keymap.set("i", "<S-Tab>", copy_indent_macro)
 -- insert line break under cursor in normal mode
 vim.keymap.set("n", "<C-j>", function()
     local col = vim.api.nvim_win_get_cursor(0)[2]
@@ -206,6 +207,15 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.autoindent = false
         vim.opt_local.smartindent = false
         vim.opt_local.cindent = false
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "php",
+    callback = function()
+        vim.keymap.set({ "n" }, "o", "o" .. copy_indent_macro)
+        vim.keymap.set({ "n" }, "O", "O" .. copy_indent_macro)
+        vim.keymap.set({ "i" }, "<CR>", "<CR>" .. copy_indent_macro)
     end,
 })
 
