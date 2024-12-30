@@ -64,13 +64,13 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
 
 -- copy indent from line above
-local copy_indent_macro = "<Esc>0\"_D" -- clear current line
+local copy_indent_macro = "<Esc>^\"_d0" -- clear current indentation
     .. "?.<CR>" -- find first non-empty line above
-    .. "^\"yy0" -- copy indentation to y register
-    .. "<C-o>" -- return to original line
-    .. "\"yp" -- paste y register
     .. "<cmd>noh<CR>" -- clear highlight
-    .. "A" -- enter insert mode
+    .. "^\"yy0" -- copy indentation to y register
+    .. "<C-o>0" -- return to original line
+    .. "\"yP" -- paste y register
+    .. "a" -- enter insert mode
 vim.keymap.set("i", "<S-Tab>", copy_indent_macro)
 -- insert line break under cursor in normal mode
 vim.keymap.set("n", "<C-j>", function()
