@@ -9,12 +9,14 @@ do
     # following text is certainly code
     read line
     muted=""
+    color="#000000"
 
     if [[ $(pactl get-source-mute @DEFAULT_SOURCE@ | rg "yes") ]];
     then
+        color="#ff0000"
         muted=" MUTED "
     fi
 
-    line=",[{\"full_text\":\"$muted\",\"background\":\"#ff0000\"},{\"full_text\":\"$line\"}]"
+    line=",[{\"full_text\":\"$muted\",\"background\":\"#ff0000\"},{\"full_text\":\"$line\",\"background\":\"$color\"}]"
     echo "$line" || exit 1
 done
