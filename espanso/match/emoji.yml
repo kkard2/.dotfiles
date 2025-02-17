@@ -67,3 +67,5 @@ matches:
     replace: 🤡
   - trigger: ;;speak
     replace: 🗣️
+  - trigger: ;;eyeroll
+    replace: 🙄
