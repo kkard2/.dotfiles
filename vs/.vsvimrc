@@ -23,3 +23,6 @@ map \r :vsc Debug.Start<CR>
 map <Space>y "+y
 map <Space>d "+d
 map <Space>p "+p
+
+nmap <C-O> :vsc View.NavigateBackward<CR>
+nmap <C-I> :vsc View.NavigateForward<CR>
