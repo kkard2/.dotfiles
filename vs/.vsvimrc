@@ -7,7 +7,7 @@ map gi :vsc Edit.GoToImplementation<CR>
 map gr :vsc Edit.FindAllReferences<CR>
 map gc :vsc Edit.CommentSelection<CR>
 map gu :vsc Edit.UncommentSelection<CR>
-map <Space><Space> :vsc Window.QuickLaunch<CR>
+map <Space><Space> :vsc Edit.GoToAll<CR>
 
 map ,d :vsc Debug.Start<CR>
 map ,s :vsc Debug.TerminateAll<CR>
