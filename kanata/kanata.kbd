@@ -53,4 +53,15 @@
   crg C-rght
 )
 
-;; (include chords.kbd)
+(defvar
+  left-hand-keys (
+    q w e r t
+    a s d f g
+    z x c v b
+  )
+  right-hand-keys (
+    y u i o p
+    h j k l ;
+    n m , . /
+  )
+)
