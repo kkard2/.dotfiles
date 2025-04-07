@@ -34,6 +34,13 @@ matches:
         type: date
         params:
           format: "%Y/%m/%d/"
+  - trigger: ;;dotdate
+    replace: "{{time}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%d.%m.%Y"
   - trigger: ;;shrug
     replace: ¯\_(ツ)_/¯
   - trigger: ;;bshrug
