@@ -1,0 +1,19 @@
+super + shift + s
+    flameshot gui
+super + w
+    firefox
+
+super + ctrl + Up
+    pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+super + ctrl + Down
+    pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+super + shift + m
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+super + ctrl + space
+    playerctl play-pause
+
+bindsym $mod+Control+Up exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym $mod+Control+Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym $mod+m exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym $mod+Control+space exec --no-startup-id playerctl play-pause
