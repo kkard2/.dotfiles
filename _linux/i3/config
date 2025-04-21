@@ -20,7 +20,7 @@ font pango:monospace 10
 exec --no-startup-id dex --autostart --environment i3
 
 # mute by default (doesn't work)
-exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ true
+#exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ true
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -33,8 +33,8 @@ exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ true
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 # exec --no-startup-id nm-applet
 
-exec --no-startup-id flameshot
-exec --no-startup-id espanso service start --unmanaged
+# exec --no-startup-id flameshot
+# exec --no-startup-id espanso service start --unmanaged
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
