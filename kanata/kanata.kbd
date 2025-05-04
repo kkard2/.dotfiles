@@ -16,10 +16,10 @@
 
 (deflayer default
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  @tab _    _    _    _    _    _    _    _    _    _    _    _    _
   @cap _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _              _              _    _    _
+  nop0 _    _              _              _    _    _
 
   (layer-switch default)
   (layer-switch gaming)
@@ -47,8 +47,10 @@
   _
 )
 
+
 (defalias
-  cap (tap-hold-press 200 200 esc (layer-toggle arrows))
+  cap (tap-hold-press 200 200 esc lctrl)
+  tab (tap-hold-press 200 200 tab (layer-toggle arrows))
   cle C-left
   crg C-rght
 )
