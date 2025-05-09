@@ -19,7 +19,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   @cap @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    _
   nop0 _    _    _    _    _    _    _    _    _    _    nop0
-  nop0 nop0 nop0           _              nop0 nop0 nop0
+  nop0 nop0 nop0           _              _    nop0 nop0
 
   (layer-switch default)
   (layer-switch gaming)
@@ -30,7 +30,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   @cap a    s    d    f    _    _    j    k    l    ;    _    _
   nop0 _    _    _    _    _    _    _    _    _    _    nop0
-  nop0 nop0 nop0           _              nop0 nop0 nop0
+  nop0 nop0 nop0           _              _    nop0 nop0
 
   (layer-switch default)
   (layer-switch gaming)
