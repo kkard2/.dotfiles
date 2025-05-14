@@ -1,0 +1,106 @@
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+
+  NumpadDivide
+  NumpadMultiply
+)
+
+(deflayer default
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    esc  f    d    n    i    g    _    _    _    _    _    _    _
+  _    bspc s    t    h    e    o    _    _    _    _    _    _
+  _    lsft c    w    r    a    u    _    _    _    _    _
+  _    _    _              _              _    _    _
+
+  (layer-switch default)
+  (layer-switch gaming)
+)
+
+(deflayer gaming
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  @cap _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+
+  (layer-switch default)
+  (layer-switch gaming)
+)
+
+(deflayer arrows
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    left down up   rght _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+
+  _
+  _
+)
+
+(defalias
+  cap (tap-hold-press 200 200 esc (layer-toggle arrows))
+  lp (unicode "(")
+  rp (unicode ")")
+  at (unicode "@")
+  car (unicode "^")
+  col (unicode ":")
+)
+
+(defvar
+  combo-term 60
+)
+
+(defchordsv2
+  (spc q)       ret                 $combo-term first-release (gaming)
+  (spc w)       j                   $combo-term first-release (gaming)
+  (spc e)       k                   $combo-term first-release (gaming)
+  (spc r)       m                   $combo-term first-release (gaming)
+  (spc t)       '                   $combo-term first-release (gaming)
+  (spc y)       -                   $combo-term first-release (gaming)
+
+  ;;(spc a)       nop0                $combo-term first-release (gaming)
+  (spc s)       y                   $combo-term first-release (gaming)
+  (spc d)       p                   $combo-term first-release (gaming)
+  (spc f)       l                   $combo-term first-release (gaming)
+  (spc g)       .                   $combo-term first-release (gaming)
+  (spc h)       q                   $combo-term first-release (gaming)
+
+  ;;(spc z)       nop0                $combo-term first-release (gaming)
+  (spc x)       x                   $combo-term first-release (gaming)
+  (spc c)       b                   $combo-term first-release (gaming)
+  (spc v)       v                   $combo-term first-release (gaming)
+  (spc b)       ,                   $combo-term first-release (gaming)
+  (spc n)       z                   $combo-term first-release (gaming)
+
+
+  (lalt q)      tab                 $combo-term first-release (gaming)
+  (lalt w)      [                   $combo-term first-release (gaming)
+  (lalt e)      {                   $combo-term first-release (gaming)
+  (lalt r)      (unicode "(")       $combo-term first-release (gaming)
+  (lalt t)      (unicode "@")       $combo-term first-release (gaming)
+  (lalt y)      (unicode "^")       $combo-term first-release (gaming)
+
+  (lalt a)      \                   $combo-term first-release (gaming)
+  (lalt s)      (unicode ":")       $combo-term first-release (gaming)
+  (lalt d)      (unicode ";")       $combo-term first-release (gaming)
+  (lalt f)      (unicode "?")       $combo-term first-release (gaming)
+  (lalt g)      (unicode "!")       $combo-term first-release (gaming)
+  (lalt h)      (unicode "/")       $combo-term first-release (gaming)
+
+  (lalt z)      (unicode "~")       $combo-term first-release (gaming)
+  (lalt x)      ]                   $combo-term first-release (gaming)
+  (lalt c)      }                   $combo-term first-release (gaming)
+  (lalt v)      (unicode ")")       $combo-term first-release (gaming)
+  (lalt b)      (unicode "&")       $combo-term first-release (gaming)
+  (lalt n)      (unicode "*")       $combo-term first-release (gaming)
+)
