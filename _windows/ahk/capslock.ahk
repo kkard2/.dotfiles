@@ -5,6 +5,7 @@ GroupAdd("IDE", "ahk_exe rider64.exe")
 GroupAdd("IDE", "ahk_exe code.exe")
 GroupAdd("IDE", "ahk_exe code-insiders.exe")
 GroupAdd("IDE", "ahk_exe webstorm64.exe")
+GroupAdd("IDE", "ahk_exe devenv.exe")
 
 GroupAdd("Browser", "ahk_exe msedge.exe")
 GroupAdd("Browser", "ahk_exe firefox.exe")
@@ -93,6 +94,7 @@ m::PgDn
 3::HarpoonRun("ahk_group Browser")
 4::HarpoonRun("ahk_exe Element.exe")
 5::HarpoonRun("ahk_exe code.exe")
+0::HarpoonRun("ahk_exe WINWORD.EXE")
 e::HarpoonRun("ahk_class CabinetWClass")
 
 Esc::Run "taskmgr"
