@@ -232,11 +232,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        "m4xshen/hardtime.nvim",
-        dependencies = { "MunifTanjim/nui.nvim" },
-        opts = {}
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         branch = "master",
         config = function()
