@@ -1,39 +1,43 @@
 matches:
-  - trigger: ;;ikot
-    image_path: $CONFIG/assets/img/kot.png
-  - trigger: ;;idespair
-    image_path: $CONFIG/assets/img/despair.png
-  - trigger: ;;ijez
-    image_path: $CONFIG/assets/img/jez.png
-  - trigger: ;;iaware
-    image_path: $CONFIG/assets/img/aware.png
-  - trigger: ;;ihuh
-    image_path: $CONFIG/assets/img/huh.png
-  - trigger: ;;inormal
-    image_path: $CONFIG/assets/img/normal.png
-  - trigger: ;;ialert
-    image_path: $CONFIG/assets/img/alert.png
-  - trigger: ;;ipipe
-    image_path: $CONFIG/assets/img/pipe.png
-  - trigger: ;;iort
-    image_path: $CONFIG/assets/img/ort.png
   - trigger: ;;iumniedziala
     image_path: $CONFIG/assets/img/umniedziala.jpg
-  - trigger: ;;iclueless
-    image_path: $CONFIG/assets/img/clueless.png
-  - trigger: ;;ixdd
-    image_path: $CONFIG/assets/img/xdd.png
+  - trigger: ;;idespair
+    image_path: $CONFIG/assets/img/despair.png
   - trigger: ;;imiska
     image_path: $CONFIG/assets/img/miska.png
+  - trigger: ;;ialert
+    image_path: $CONFIG/assets/img/alert.png
   - trigger: ;;iextreme
     image_path: $CONFIG/assets/img/extreme.png
-  - trigger: ;;itf
-    image_path: $CONFIG/assets/img/tf.png
-  - trigger: ;;iint
-    image_path: $CONFIG/assets/img/int.png
-  - trigger: ;;isi
-    image_path: $CONFIG/assets/img/si.png
+  - trigger: ;;iaware
+    image_path: $CONFIG/assets/img/aware.png
+  - trigger: ;;inormal
+    image_path: $CONFIG/assets/img/normal.png
+  - trigger: ;;ixdd
+    image_path: $CONFIG/assets/img/xdd.png
+  - trigger: ;;iweary
+    image_path: $CONFIG/assets/img/weary.webp
+  - trigger: ;;iort
+    image_path: $CONFIG/assets/img/ort.png
+  - trigger: ;;iclueless
+    image_path: $CONFIG/assets/img/clueless.png
+  - trigger: ;;ipipe
+    image_path: $CONFIG/assets/img/pipe.png
   - trigger: ;;icopium
     image_path: $CONFIG/assets/img/copium.png
+  - trigger: ;;isi
+    image_path: $CONFIG/assets/img/si.png
+  - trigger: ;;ikot
+    image_path: $CONFIG/assets/img/kot.png
+  - trigger: ;;ijez
+    image_path: $CONFIG/assets/img/jez.png
+  - trigger: ;;imiska_high_res
+    image_path: $CONFIG/assets/img/miska_high_res.png
+  - trigger: ;;iint
+    image_path: $CONFIG/assets/img/int.png
+  - trigger: ;;ihuh
+    image_path: $CONFIG/assets/img/huh.png
+  - trigger: ;;itf
+    image_path: $CONFIG/assets/img/tf.png
   - trigger: ;;inierealne
     image_path: $CONFIG/assets/img/nierealne.png
