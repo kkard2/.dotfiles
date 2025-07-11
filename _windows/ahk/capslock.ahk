@@ -32,10 +32,11 @@ HarpoonRun(winTitle) {
     WinActivate windows[HarpoonLastWindowIndex + 1]
 }
 
-; visual studio being stupid
 HarpoonRunAndClick(winTitle) {
     HarpoonRun(winTitle)
-    MouseClick("left", 100, 0)
+    CoordMode "Mouse"
+    ; don't judge me for that, visual studio tweaks out a lot when interacting with ahk
+    MouseClick("left", A_ScreenWidth - 300, 10)
 }
 
 CapsLock::LCtrl
