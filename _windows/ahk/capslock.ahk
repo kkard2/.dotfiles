@@ -36,7 +36,9 @@ HarpoonRunAndClick(winTitle) {
     HarpoonRun(winTitle)
     CoordMode "Mouse"
     ; don't judge me for that, visual studio tweaks out a lot when interacting with ahk
+    MouseGetPos(&xpos, &ypos)
     MouseClick("left", A_ScreenWidth - 300, 10)
+    MouseMove(xpos, ypos)
 }
 
 CapsLock::LCtrl
