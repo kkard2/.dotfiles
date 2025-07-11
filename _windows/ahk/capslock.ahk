@@ -33,6 +33,7 @@ HarpoonRun(winTitle) {
 }
 
 CapsLock::LCtrl
+<^[::Esc
 
 RAlt & `::HarpoonRun("ahk_exe WindowsTerminal.exe")
 RAlt & 1::HarpoonRun("ahk_exe Discord.exe")
