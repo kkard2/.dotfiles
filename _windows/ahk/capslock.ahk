@@ -32,12 +32,18 @@ HarpoonRun(winTitle) {
     WinActivate windows[HarpoonLastWindowIndex + 1]
 }
 
+; visual studio being stupid
+HarpoonRunAndClick(winTitle) {
+    HarpoonRun(winTitle)
+    MouseClick("left", 100, 0)
+}
+
 CapsLock::LCtrl
 <^[::Esc
 
 RAlt & `::HarpoonRun("ahk_exe WindowsTerminal.exe")
 RAlt & 1::HarpoonRun("ahk_exe Discord.exe")
-RAlt & 2::HarpoonRun("ahk_group IDE")
+RAlt & 2::HarpoonRunAndClick("ahk_group IDE")
 RAlt & 3::HarpoonRun("ahk_group Browser")
 RAlt & 4::HarpoonRun("ahk_exe Element.exe")
 RAlt & 5::HarpoonRun("ahk_exe code.exe")
