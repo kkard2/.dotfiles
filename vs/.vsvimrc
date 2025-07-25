@@ -2,15 +2,30 @@ set relativenumber
 set backspace=indent,eol,start
 set hlsearch
 
+map go 1G
+map ]d :vsc View.NextError<CR>
+map [d :vsc View.PreviousError<CR>
+
+map K :vsc Edit.QuickInfo<CR>
+
 map <Space>lr :vsc Refactor.Rename<CR>
 map gi :vsc Edit.GoToImplementation<CR>
 map gr :vsc Edit.FindAllReferences<CR>
 map gc :vsc Edit.CommentSelection<CR>
 map gu :vsc Edit.UncommentSelection<CR>
+
 map <Space><Space> :vsc Edit.GoToAll<CR>
+map <Space><CR> :vsc Window.QuickLaunch<CR>
+
+map <Space>a :vsc Window.PinTab<CR>
+map <Space>cot :vsc File.CloseOtherTabs<CR>
+map <Space>cabp :vsc Window.CloseAllButPinned<CR>
 
 map ,d :vsc Debug.Start<CR>
 map ,s :vsc Debug.TerminateAll<CR>
+map ,ta :vsc TestExplorer.RunAllTestsInSolution<CR>
+map ,tc :vsc TestExplorer.RunTestsInClass<CR>
+map ,ti :vsc TestExplorer.RunTestsInCurrentContext<CR>
 
 map \b :vsc Debug.ToggleBreakpoint<CR>
 
