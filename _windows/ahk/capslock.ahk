@@ -1,69 +1,70 @@
 #Requires AutoHotkey v2
 #SingleInstance Force
 
-GroupAdd("IDE", "ahk_exe rider64.exe")
-GroupAdd("IDE", "ahk_exe code.exe")
-GroupAdd("IDE", "ahk_exe code-insiders.exe")
-GroupAdd("IDE", "ahk_exe webstorm64.exe")
-GroupAdd("IDE", "ahk_exe devenv.exe")
+CapsLock::Esc
 
-GroupAdd("Browser", "ahk_exe msedge.exe")
-GroupAdd("Browser", "ahk_exe firefox.exe")
+SetKeyDelay 1
 
-CapsLockState := false
-HarpoonLastWindowIndex := 0
+global CurrentDesktop := 1
 
-HarpoonRun(winTitle) {
-    SetTitleMatchMode 2
-    DetectHiddenWindows false
+ShowCurrentWindows() {
+    titles := []
+    text := ""
 
-    windows := WinGetList(winTitle)
+    hwnds := WinGetList()
+    for hwnd in hwnds {
+        ; skip tool windows
+        style := DllCall("GetWindowLongPtr", "Ptr", hwnd, "Int", -20, "Ptr")
+        WS_EX_TOOLWINDOW := 0x80
+        if style & WS_EX_TOOLWINDOW
+            continue
 
-    if windows.Length = 0 {
-        return
+        title := WinGetTitle("ahk_id " hwnd)
+        if title = ""
+            continue
+
+        titles.Push(title)
+        text .= title
+        text .= "`n"
     }
+    ToolTip text, 0, 0
+    SetTimer ToolTip, -1000
+}
 
-    if WinActive(winTitle) {
-        global HarpoonLastWindowIndex := Mod((HarpoonLastWindowIndex + 1), windows.Length)
-    } else {
-        global HarpoonLastWindowIndex := 0
+SwitchDesktop(num) {
+    global CurrentDesktop
+    While CurrentDesktop > num {
+        SendEvent "{Ctrl down}{LWin down}{Left}{LWin up}{Ctrl up}"
+        CurrentDesktop--
     }
-
-    WinActivate windows[HarpoonLastWindowIndex + 1]
+    While CurrentDesktop < num {
+        SendEvent "{Ctrl down}{LWin down}{Right}{LWin up}{Ctrl up}"
+        CurrentDesktop++
+    }
+    ShowCurrentWindows()
 }
 
-HarpoonRunAndClick(winTitle) {
-    HarpoonRun(winTitle)
-    CoordMode "Mouse"
-    ; don't judge me for that, visual studio tweaks out a lot when interacting with ahk
-    MouseGetPos(&xpos, &ypos)
-    MouseClick("left", A_ScreenWidth - 300, 10)
-    MouseMove(xpos, ypos)
+!1::SwitchDesktop(1)
+!2::SwitchDesktop(2)
+!3::SwitchDesktop(3)
+!4::SwitchDesktop(4)
+!5::SwitchDesktop(5)
+!6::SwitchDesktop(6)
+!7::SwitchDesktop(7)
+!8::SwitchDesktop(8)
+!9::SwitchDesktop(9)
+!0::SwitchDesktop(10)
+
+~^#Left::{
+    global CurrentDesktop
+    if (CurrentDesktop > 1)
+        CurrentDesktop--
 }
 
-CapsLock::LCtrl
-<^[::Esc
-
-RAlt & `::HarpoonRun("ahk_exe WindowsTerminal.exe")
-RAlt & 1::HarpoonRun("ahk_exe Discord.exe")
-RAlt & 2::HarpoonRunAndClick("ahk_group IDE")
-RAlt & 3::HarpoonRun("ahk_group Browser")
-RAlt & 4::HarpoonRun("ahk_exe Element.exe")
-RAlt & 5::HarpoonRun("ahk_exe code.exe")
-RAlt & 0::HarpoonRun("ahk_exe WINWORD.EXE")
-RAlt & 9::HarpoonRun("ahk_class CabinetWClass")
-
-RAlt & k::Send "#{Up}"
-RAlt & j::Send "#{Down}"
-RAlt & \::{
-    global CapsLockState := not CapsLockState
-    SetCapsLockState CapsLockState
+~^#Right::{
+    global CurrentDesktop
+    if (CurrentDesktop < 10)
+        CurrentDesktop++
 }
-
-Tab & h::Left
-Tab & j::Down
-Tab & k::Up
-Tab & l::Right
-Tab::Tab
 
 RCtrl & Backspace::Reload
