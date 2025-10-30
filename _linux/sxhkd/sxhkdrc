@@ -1,16 +1,2 @@
-super + shift + s
-    flameshot gui
-super + w
-    firefox
-
-super + ctrl + Up
-    pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-super + ctrl + Down
-    pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-super + shift + m
-    pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-super + ctrl + space
-    playerctl play-pause
-
-super + v
-    copyq toggle
+m
+    ~/.config/sxhkd/boateye.sh
