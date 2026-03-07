@@ -69,3 +69,5 @@ matches:
     replace: 🗣️
   - trigger: ;;eyeroll
     replace: 🙄
+  - trigger: ;;wilted
+    replace: 🥀
