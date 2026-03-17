@@ -9,6 +9,7 @@ config stuff (i need to move everything into one place)
 * `$XDG_CONFIG_HOME/mpv` -> `./mpv`
 * `$XDG_CONFIG_HOME/alacritty` -> `./alacritty`
 * `~/.vsvimrc` -> `./vs/.vsvimrc`
+* `$PATH/git-stack` -> `./git-stack`
 
 # other config
 * `~/.gitconfig`

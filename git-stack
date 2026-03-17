@@ -1,0 +1,166 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+app_name="git-stack"
+
+die() {
+  echo "$app_name: $*" >&2
+  exit 1
+}
+
+in_repo() {
+  git rev-parse --git-dir >/dev/null 2>&1
+}
+
+require_repo() {
+  in_repo || die "not inside a Git repository"
+}
+
+git_path() {
+  git rev-parse --git-path "$1"
+}
+
+stack_file() {
+  local p
+  p="$(git_path "$app_name/messages")"
+  mkdir -p "$(dirname "$p")"
+  touch "$p"
+  printf '%s\n' "$p"
+}
+
+install_hook() {
+  local hooks_dir hook tmp
+  hooks_dir="$(git_path hooks)"
+  hook="$hooks_dir/pre-commit"
+  mkdir -p "$hooks_dir"
+
+  if [ -f "$hook" ] && ! grep -Fq "# managed-by: $app_name" "$hook"; then
+    return 0
+  fi
+
+  tmp="$(mktemp)"
+  cat >"$tmp" <<'EOF'
+#!/usr/bin/env bash
+# managed-by: git-stack
+set -euo pipefail
+
+stack_file="$(git rev-parse --git-path git-stack/messages)"
+if [ -f "$stack_file" ] && [ -s "$stack_file" ]; then
+  echo "git-stack: commit blocked; message stack is not empty" >&2
+  echo "git-stack: pending messages:" >&2
+  nl -ba "$stack_file" >&2
+  echo "git-stack: clear with: git stack pop / git stack clear" >&2
+  exit 1
+fi
+EOF
+
+  chmod +x "$tmp"
+  mv "$tmp" "$hook"
+}
+
+ensure_ready() {
+  require_repo
+  install_hook
+}
+
+cmd_push() {
+  ensure_ready
+  [ "$#" -ge 1 ] || die 'usage: git stack push "message"'
+  local file msg
+  file="$(stack_file)"
+  msg="$*"
+  printf '%s\n' "$msg" >>"$file"
+  echo "$msg"
+}
+
+cmd_peek() {
+  ensure_ready
+  local file
+  file="$(stack_file)"
+  [ -s "$file" ] || die "stack is empty"
+  tail -n 1 "$file"
+}
+
+cmd_list() {
+  ensure_ready
+  local file
+  file="$(stack_file)"
+  [ -s "$file" ] || exit 0
+  nl -ba "$file"
+}
+
+cmd_pop() {
+  ensure_ready
+  local file last tmp
+  file="$(stack_file)"
+  [ -s "$file" ] || die "stack is empty"
+
+  last="$(tail -n 1 "$file")"
+  echo "$last"
+
+  tmp="$(mktemp)"
+  sed '$d' "$file" >"$tmp" || true
+  mv "$tmp" "$file"
+}
+
+cmd_clear() {
+  ensure_ready
+  : >"$(stack_file)"
+}
+
+cmd_install() {
+  ensure_ready
+  echo "hook installed in $(git_path hooks)/pre-commit"
+}
+
+usage() {
+  cat <<'EOF'
+Usage:
+  git stack push "message"
+  git stack peek
+  git stack list
+  git stack pop
+  git stack clear
+  git stack install
+EOF
+}
+
+main() {
+  [ "$#" -ge 1 ] || {
+    usage
+    exit 1
+  }
+
+  case "$1" in
+    push)
+      shift
+      cmd_push "$@"
+      ;;
+    peek)
+      shift
+      cmd_peek "$@"
+      ;;
+    list)
+      shift
+      cmd_list "$@"
+      ;;
+    pop)
+      shift
+      cmd_pop "$@"
+      ;;
+    clear)
+      shift
+      cmd_clear "$@"
+      ;;
+    install)
+      shift
+      cmd_install "$@"
+      ;;
+    *)
+      usage
+      exit 1
+      ;;
+  esac
+}
+
+main "$@"
