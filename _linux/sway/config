@@ -21,8 +21,11 @@ set $notprimary HDMI-A-2
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# Wallpaper
+output * bg \"$(find /home/kkard2/Pictures/wall/random/ -type f -not -wholename '*/.git/*' -not -wholename '*.md' | shuf -n 1)\" fill
+bindsym $mod+p output * bg \"$(find /home/kkard2/Pictures/wall/random/ -type f -not -wholename '*/.git/*' -not -wholename '*.md' | shuf -n 1)\" fill
+
+# swaymsg "output * bg \"$(find /home/kkard2/Pictures/wall/random/ -type f -not -wholename '*/.git/*' -not -wholename '*.md' | shuf -n 1)\" fill"
 #
 # Example configuration:
 #
@@ -261,7 +264,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command i3blocks
-    status_edge_padding 16
+    status_edge_padding 4
 
     colors {
         separator #fce8c3
@@ -269,7 +272,7 @@ bar {
         background #1c1b19e5
         #inactive_workspace #32323200 #32323200 #5c5c5c
         #                  border    bg        text
-        focused_workspace  #ff00ffff #ff00ffff #ffffffff
+        focused_workspace  #ff00ffff #ff00ffff #000000ff
         active_workspace   #484e50ff #484e50ff #ffffffff
         inactive_workspace #1c1b19e5 #1c1b19e5 #fce8c3ff
         urgent_workspace   #ff0000ff #ff0000ff #ffffffff
